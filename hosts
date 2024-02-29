@@ -7,20 +7,27 @@
 [edge_ios]
 10.10.100.2
 
+[customer_ios_router]
+10.10.100.1
+
 [ios_routers:children]
 core
 edge_ios
+customer_ios_router
 
 [edge_xr]
 10.10.100.19
+
+[customer_xr_router]
+10.10.100.20
 
 [edge:children]
 edge_ios
 edge_xr
 
-[xr_routers]
-10.10.100.19
-10.10.100.20
+[xr_routers:children]
+edge_xr
+customer_xr_router
 
 [prod:children]
 core

@@ -1,7 +1,7 @@
 {% for interface in interfaces %}
     interface {{ interface.intf }}
     ipv4 address {{ interface.ip_address }}/{{ interface.mask }}
-    {% if interface.state %}
+    {% if interface.state == "up" %}
         no shutdown
     {% endif %}
 {% endfor %}
