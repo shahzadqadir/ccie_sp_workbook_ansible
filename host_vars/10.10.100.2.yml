@@ -6,7 +6,7 @@ interfaces:
     mask: "255.255.255.0"
     state: "up" 
   - intf: "g0/1"
-    ip_address: "10.2.3.2"
+    ip_address: "20.2.3.2"
     mask: "255.255.255.0"
     state: "up"
   - intf: "loopback0"
