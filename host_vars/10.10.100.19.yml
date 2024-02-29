@@ -1,0 +1,19 @@
+---
+
+interfaces:
+  - intf: "g0/0/0/0"
+    ip_address: "20.6.19.19"
+    mask: "255.255.255.0"
+    state: "up" 
+  - intf: "g0/0/0/1"
+    ip_address: "10.19.20.19"
+    mask: "255.255.255.0"
+    state: "up"
+  - intf: "g0/0/0/2"
+    ip_address: "20.5.19.19"
+    mask: "255.255.255.0"
+    state: "up"
+  - intf: "loopback0"
+    ip_address: "19.19.19.19"
+    mask: "255.255.255.255"
+    state: "up"

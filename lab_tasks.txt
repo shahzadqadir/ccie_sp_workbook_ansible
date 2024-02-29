@@ -1,0 +1,8 @@
+2.1: OSPFv2
+
+Using the Base IPv4 Diagram, configure OSPFv2 Area 0 on all interfaces of all
+devices.
+Statically set the OSPF Router IDs of all devices to their Loopback0 interface
+address.
+
+Playbook: configure_ospfv2.yml

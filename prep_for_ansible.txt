@@ -1,0 +1,13 @@
+hostname R6
+interface g0/3
+ ip address 10.10.100.6 255.255.255.0
+ no shut
+username cisco priv 15 password cisco123
+ip domain name shahzadqadir.net
+crypto key generate rsa
+2048
+line vty 0 4
+ login local
+ transport input ssh telnet
+end
+wr

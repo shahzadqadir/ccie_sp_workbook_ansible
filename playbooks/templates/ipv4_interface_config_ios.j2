@@ -1,0 +1,7 @@
+{% for interface in interfaces %}
+    interface {{ interface.intf }}
+        ip address {{ interface.ip_address }} {{ interface.mask }}
+        {% if interface.state == "up" %}
+            no shut
+        {% endif %}
+{% endfor %}

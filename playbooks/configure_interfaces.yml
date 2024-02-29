@@ -1,0 +1,23 @@
+---
+
+- name: "PLAY 1 - CONFIGURE IOS INTERFACES"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure interfaces"
+      cisco.ios.ios_config:
+        src: "ipv4_interface_config_ios.j2"
+
+- name: "PLAY 2 - CONFIGURE XR INTERFACES"
+  hosts: xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure interfaces xr routers"
+      iosxr_config:
+        src: "ipv4_interface_config_xr.j2"
