@@ -12,9 +12,12 @@ interfaces:
 
 
 ospf:
+  process_id: "100"
   router_id: "1.1.1.1"
   networks:
     - subnet: "10.1.2.0"
       mask: "0.0.0.255"
+      area: "0"
     - subnet: "1.1.1.1"
       mask: "0.0.0.0"
+      area: "0"

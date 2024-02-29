@@ -13,3 +13,17 @@ interfaces:
     ip_address: "4.4.4.4"
     mask: "255.255.255.255"
     state: "up"
+
+ospf:
+  process_id: "100"
+  router_id: "4.4.4.4"
+  networks:
+    - subnet: "20.3.4.0"
+      mask: "0.0.0.255"
+      area: "0"
+    - subnet: "20.4.5.0"
+      mask: "0.0.0.255"
+      area: "0"
+    - subnet: "4.4.4.4"
+      mask: "0.0.0.0"
+      area: "0"

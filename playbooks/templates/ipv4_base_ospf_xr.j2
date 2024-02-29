@@ -1,0 +1,7 @@
+router ospf {{ ospf.process_id }}
+  router-id {{ ospf.router_id }}
+  {% for interface in ospf.interfaces %}
+    area {{ interface.area }}
+      interface {{ interface.intf }}      
+  {% endfor %}
+commit

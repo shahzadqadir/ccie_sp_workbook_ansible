@@ -1,0 +1,23 @@
+---
+
+- name: "PLAY 1 - CONFIUGRE OSPF ON IOS DEVICES"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospf"
+      cisco.ios.ios_config:
+        src: "ipv4_base_ospf_ios.j2"
+
+- name: "PLAY 2 - CONFIGURE OSPF ON XR DEVICES"
+  hosts: xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "confiugre ospf on xr"
+      cisco.iosxr.iosxr_config:
+        src: "ipv4_base_ospf_xr.j2"

@@ -17,3 +17,20 @@ interfaces:
     ip_address: "5.5.5.5"
     mask: "255.255.255.255"
     state: "up"
+
+ospf:
+  process_id: "100"
+  router_id: "5.5.5.5"
+  networks:
+    - subnet: "20.5.6.0"
+      mask: "0.0.0.255"
+      area: "0"
+    - subnet: "20.4.5.0"
+      mask: "0.0.0.255"
+      area: "0"
+    - subnet: "20.5.19.0"
+      mask: "0.0.0.255"
+      area: "0"
+    - subnet: "5.5.5.5"
+      mask: "0.0.0.0"
+      area: "0"

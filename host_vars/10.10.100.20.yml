@@ -9,3 +9,12 @@ interfaces:
     ip_address: "20.20.20.20"
     mask: "32"
     state: "up"
+
+ospf:
+  process_id: "100"
+  router_id: "20.20.20.20"
+  interfaces:
+    - intf: "g0/0/0/0"      
+      area: "0"
+    - intf: "loopback0"
+      area: "0"

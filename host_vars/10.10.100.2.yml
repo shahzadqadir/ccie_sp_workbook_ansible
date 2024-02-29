@@ -13,3 +13,17 @@ interfaces:
     ip_address: "2.2.2.2"
     mask: "255.255.255.255"
     state: "up"
+
+ospf:
+  process_id: "100"
+  router_id: "2.2.2.2"
+  networks:
+    - subnet: "10.1.2.0"
+      mask: "0.0.0.255"
+      area: "0"
+    - subnet: "20.2.3.0"
+      mask: "0.0.0.255"
+      area: "0"
+    - subnet: "2.2.2.2"
+      mask: "0.0.0.0"
+      area: "0"

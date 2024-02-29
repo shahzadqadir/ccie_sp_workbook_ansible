@@ -17,3 +17,17 @@ interfaces:
     ip_address: "19.19.19.19"
     mask: "32"
     state: "up"
+
+
+ospf:
+  process_id: "100"
+  router_id: "19.19.19.19"
+  interfaces:
+    - intf: "g0/0/0/0"      
+      area: "0"
+    - intf: "g0/0/0/1"
+      area: "0"
+    - intf: "g0/0/0/2"
+      area: "0"
+    - intf: "loopback0"
+      area: "0"
