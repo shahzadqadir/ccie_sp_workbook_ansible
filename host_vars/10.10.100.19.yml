@@ -25,9 +25,13 @@ ospf:
   interfaces:
     - intf: "g0/0/0/0"      
       area: "0"
+      cost: ""
     - intf: "g0/0/0/1"
       area: "0"
+      cost: "1000"
     - intf: "g0/0/0/2"
       area: "0"
+      cost: ""
     - intf: "loopback0"
       area: "0"
+      cost: ""

@@ -1,0 +1,9 @@
+{% for network in ospf.networks %}
+  {% if network.cost %}
+    interface {{ network.intf }}
+      ip ospf cost {{ network.cost }}
+  {% endif %}
+{% endfor %}
+
+
+

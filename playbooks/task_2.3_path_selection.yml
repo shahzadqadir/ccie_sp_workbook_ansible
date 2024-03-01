@@ -1,0 +1,27 @@
+---
+
+- name: "PLAY 1 - CONFIGURE COST FOR PATH SELECTION IOS"
+  hosts: "10.10.100.6"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure cost on r6"
+      cisco.ios.ios_config:
+        src: "ospf/task_2.3_path_selection_ios.j2"
+
+
+- name: "PLAY 2 - CONFIGURE COST FOR PATH SELECTION XR"
+  hosts: "10.10.100.19"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure cost on xr1"
+      cisco.iosxr.iosxr_config:      
+        src: "ospf/task_2.3_path_selection_xr.j2"
+
+
+        

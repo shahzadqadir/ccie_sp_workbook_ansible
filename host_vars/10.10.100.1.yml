@@ -16,8 +16,12 @@ ospf:
   router_id: "1.1.1.1"
   networks:
     - subnet: "10.1.2.0"
+      intf: "g0/0"
       mask: "0.0.0.255"
       area: "0"
+      cost: ""
     - subnet: "1.1.1.1"
+      intf: "loopback0"
       mask: "0.0.0.0"
       area: "0"
+      cost: ""
