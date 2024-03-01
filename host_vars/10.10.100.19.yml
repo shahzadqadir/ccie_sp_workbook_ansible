@@ -64,7 +64,7 @@ ospfv3:
       authentication_key: ""
     - intf: "g0/0/0/1"      
       area: "0"
-      cost: ""
+      cost: "1000"
       network_type: ""
       authentication_type: ""
       authentication_key: ""

@@ -1,0 +1,6 @@
+{% for interface in ospfv3.interfaces %}
+    {% if interface.cost %}
+        interface {{ interface.intf }}
+            ipv6 ospf cost {{ interface.cost }}
+    {% endif %}
+{% endfor %}

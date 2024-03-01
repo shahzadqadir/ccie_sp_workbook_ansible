@@ -1,0 +1,9 @@
+router ospfv3 {{ ospfv3.process_id }}
+  router-id {{ ospfv3.router_id}}    
+{% for interface in ospfv3.interfaces %}
+  {% if interface.cost %}
+    area {{ interface.area }}
+      interface {{ interface.intf }}
+        cost {{ interface.cost }}
+  {% endif %}
+{% endfor %}

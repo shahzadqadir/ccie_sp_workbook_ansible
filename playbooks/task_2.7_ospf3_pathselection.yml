@@ -1,0 +1,24 @@
+---
+
+- name: "PLAY 1 - OSPF PATH SELECTION IOS ROUTERS"
+  hosts: 10.10.100.6
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospf cost on interfaces"
+      cisco.ios.ios_config:
+        src: "ospf/task_2.7_ospf3_pathselection_ios.j2"
+
+
+- name: "PLAY 2 - OSPF PATH SELECTION XR ROUTERS"
+  hosts: 10.10.100.19
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospf cost"
+      cisco.iosxr.iosxr_config:
+        src: "ospf/task_2.7_ospf3_pathselection_xr.j2"
