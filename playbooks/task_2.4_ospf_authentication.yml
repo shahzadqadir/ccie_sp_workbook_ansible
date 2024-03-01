@@ -1,0 +1,25 @@
+---
+
+- name: "PLAY 1 - CONFIGURE AUTHENTICATION ON IOS ROUTERS"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure plaintext/md5 authentication"
+      cisco.ios.ios_config:
+        src: "ospf/task_2.4_ospf_authentication_ios.j2"
+
+
+- name: "PLAY 2 - CONFIUGRE AUTHENTICATION ON XR ROUTERS"
+  hosts: xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure plaintext/md5 authentication"
+      cisco.iosxr.iosxr_config:
+        src: "ospf/task_2.4_ospf_authentication_xr.j2"
+

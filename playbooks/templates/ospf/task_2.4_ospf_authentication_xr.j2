@@ -1,0 +1,16 @@
+router ospf {{ ospf.process_id }}
+  router-id {{ ospf.router_id }}
+
+  {% for interface in ospf.interfaces %}
+    {% if interface.authentication_type %}
+      area {{ interface.area }}
+      interface {{ interface.intf }}
+        {% if interface.authentication_type == "plaintext" %}
+          authentication
+          authentication-key 0 {{ interface.authentication_key }}
+        {% else %}
+          authentication message-digest
+          message-digest-key 1 md5 0 {{ interface.authentication_key }}
+        {% endif %}
+    {% endif %}
+  {% endfor %}

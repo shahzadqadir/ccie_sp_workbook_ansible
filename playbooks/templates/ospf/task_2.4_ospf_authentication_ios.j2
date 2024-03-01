@@ -1,0 +1,12 @@
+{% for network in ospf.networks %}
+  {% if network.authentication_type %}
+    interface {{ network.intf }}
+      {% if network.authentication_type == "plaintext" %}
+        ip ospf authentication
+        ip ospf authentication-key 0 {{ network.authentication_key }}
+      {% else %}
+        ip ospf authentication message-digest
+        ip ospf message-digest-key 1 md5 0 {{ network.authentication_key }}
+      {% endif %}
+  {% endif %}
+{% endfor %}
