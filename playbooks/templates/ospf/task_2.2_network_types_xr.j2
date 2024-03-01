@@ -1,0 +1,9 @@
+router ospf {{ ospf.process_id }}
+  router-id {{ ospf.router_id }}
+  {% for interface in ospf.interfaces %}
+    {% if interface.network_type %}
+      area {{ interface.area }}
+        interface {{ interface.intf }}
+          network {{ interface.network_type}}
+    {% endif %}
+  {% endfor %}

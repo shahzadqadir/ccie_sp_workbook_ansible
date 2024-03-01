@@ -1,0 +1,24 @@
+---
+
+- name: "PLAY 1 - CONFIGURE NETWORK TYPE ON R5 - IOS"
+  hosts: "10.10.100.5"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospf network type on ios routers"
+      cisco.ios.ios_config:
+        src: "ospf/task_2.2_network_types_ios.j2"
+
+
+- name: "PLAY 2 - CONFIGURE NETWORK TYPE ON XR1"
+  hosts: "10.10.100.19"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospf network type on xr routers"
+      cisco.iosxr.iosxr_config:
+        src: "ospf/task_2.2_network_types_xr.j2"

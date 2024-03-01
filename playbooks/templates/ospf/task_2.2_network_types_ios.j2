@@ -1,0 +1,6 @@
+{% for network in ospf.networks %}
+  {% if network.network_type %}
+    interface {{ network.intf }}
+      ip ospf network {{ network.network_type}}
+  {% endif %}
+{% endfor %}

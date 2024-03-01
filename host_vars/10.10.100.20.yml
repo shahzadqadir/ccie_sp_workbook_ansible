@@ -17,6 +17,8 @@ ospf:
     - intf: "g0/0/0/0"      
       area: "0"
       cost: ""
+      network_type: ""
     - intf: "loopback0"
       area: "0"
       cost: ""
+      network_type: ""
