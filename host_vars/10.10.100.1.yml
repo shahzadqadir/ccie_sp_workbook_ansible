@@ -3,10 +3,12 @@
 interfaces:
   - intf: "g0/0"
     ip_address: "10.1.2.1"
+    ipv6_address: "2001:10:1:2::1/64"
     mask: "255.255.255.0"
     state: "up"
   - intf: "loopback0"
     ip_address: "1.1.1.1"
+    ipv6_address: "2001::1:1:1:1/128"
     mask: "255.255.255.255"
     state: "up"
 

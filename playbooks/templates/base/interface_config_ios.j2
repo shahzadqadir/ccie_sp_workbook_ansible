@@ -4,4 +4,7 @@
         {% if interface.state == "up" %}
             no shut
         {% endif %}
+        {% if interface.ipv6_address %}
+            ipv6 address {{ interface.ipv6_address }}
+        {% endif %}
 {% endfor %}

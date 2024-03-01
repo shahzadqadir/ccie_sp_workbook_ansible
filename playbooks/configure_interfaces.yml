@@ -9,7 +9,7 @@
 
     - name: "configure interfaces"
       cisco.ios.ios_config:
-        src: "base/ipv4_interface_config_ios.j2"
+        src: "base/interface_config_ios.j2"
 
 - name: "PLAY 2 - CONFIGURE XR INTERFACES"
   hosts: xr_routers
@@ -20,4 +20,4 @@
 
     - name: "configure interfaces xr routers"
       iosxr_config:
-        src: "base/ipv4_interface_config_xr.j2"
+        src: "base/interface_config_xr.j2"
