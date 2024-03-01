@@ -1,0 +1,7 @@
+ipv6 router ospf {{ ospfv3.process_id }}
+  router-id {{ ospfv3.router_id }}
+  {% for interface in ospfv3.interfaces %}
+    area {{ interface.area }}
+      interface {{ interface.intf }}      
+  {% endfor %}
+commit

@@ -1,0 +1,24 @@
+---
+
+- name: "PLAY 1 - CONFIGURE OSPFv3 ON IOS ROUTERS"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospfv3 for ipv6 interface on ios routers"
+      cisco.ios.ios_config:
+        src: "ospf/task_2.6_ospf3_baseconfig_ios.j2"
+
+
+- name: "PLAY 2 - CONFIGURE OSPFv3 ON IOSXR ROUTERS"
+  hosts: xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospfv3 for ipv6 on ios xr routers"
+      cisco.iosxr.iosxr_config:
+        src: "ospf/task_2.6_ospf3_baseconfig_xr.j2"

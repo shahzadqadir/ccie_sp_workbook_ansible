@@ -1,0 +1,7 @@
+ipv6 unicast-routing
+ipv6 router ospf {{ ospfv3.process_id }}
+    router-id {{ ospfv3.router_id }}
+{% for interface in ospfv3.interfaces %}
+    interface {{ interface.intf }}
+    ipv6 ospf {{ ospfv3.process_id }} area {{ interface.area }}
+{% endfor %}
