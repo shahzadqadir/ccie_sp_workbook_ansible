@@ -1,0 +1,15 @@
+router isis {{ isis.process_id }}
+  is-type {{ isis.is_type }}
+  net {{ isis.net }}
+  {% for interface in isis.passive_interfaces %}
+    interface {{ interface.intf }}
+    passive
+    address-family ipv4 unicast
+  {% endfor %}
+  {% for interface in isis.interfaces%}
+    interface {{ interface.intf }}
+    address-family ipv4 unicast
+    {% if interface.circuit_type %}
+      circuit_type {{ interface.circuit_type }}
+    {% endif %}
+  {% endfor %}

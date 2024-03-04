@@ -1,0 +1,18 @@
+---
+
+isis:
+  process_id: "1"
+  net: "49.0001.0000.0000.0019.00"
+  is_type: "level-2-only"
+  interfaces:
+    - intf: "g0/0/0/0"
+      circuit_type: ""
+      metric: ""
+    - intf: "g0/0/0/1"
+      circuit_type: ""
+      metric: ""
+    - intf: "g0/0/0/2"
+      circuit_type: ""
+      metric: ""
+  passive_interfaces:
+    - intf: "loopback0"

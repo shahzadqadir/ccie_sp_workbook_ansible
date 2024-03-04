@@ -1,12 +1,12 @@
 ---
 
-- name: "PLAY 1 - CONFIGURE BASE ISIS ON IOS ROUTERS"
-  hosts: "10.10.100.1"
+- name: "PLAY 2 - CONFIGURE BASE ISIS ON XR ROUTERS"
+  hosts: xr_routers
   gather_facts: false
   connection: network_cli
 
   tasks:
 
-    - name: "configure isis"
-      cisco.ios.ios_config:
-        src: "isis/task_2.11_isis_baseconfig_ios.j2"
+    - name: "configure isis on ios xr"
+      cisco.iosxr.iosxr_config:
+        src: "isis/task_2.11_isis_baseconfig_xr.j2"

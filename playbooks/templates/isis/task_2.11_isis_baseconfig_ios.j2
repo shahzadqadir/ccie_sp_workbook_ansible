@@ -11,6 +11,7 @@
       passive-interface {{ interface.intf }}
     {% endfor %}
 {% for interface in isis.interfaces %}
+  interface {{ interface.intf }}
   {% if isis.process_id %}
     ip router isis {{ isis.process_id }}
   {% else %}
