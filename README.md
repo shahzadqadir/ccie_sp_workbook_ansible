@@ -9,3 +9,5 @@
 - Task 2.5 - OSPF Authentication
 - Task 2.6 - OSPFv3 Base Configurations
 - Task 2.7 - OSPFv3 Path Selection
+
+- Task 2.11 - Base ISIS Configurations
