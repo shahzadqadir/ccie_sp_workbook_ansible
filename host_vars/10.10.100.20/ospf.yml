@@ -1,0 +1,18 @@
+---
+
+ospf:
+  process_id: "100"
+  router_id: "20.20.20.20"
+  interfaces:
+    - intf: "g0/0/0/0"      
+      area: "0"
+      cost: ""
+      network_type: ""
+      authentication_type: ""
+      authentication_key: ""
+    - intf: "loopback0"
+      area: "0"
+      cost: ""
+      network_type: ""
+      authentication_type: ""
+      authentication_key: ""

@@ -1,0 +1,23 @@
+---
+
+interfaces:
+  - intf: "g0/0"
+    ip_address: "20.3.4.4"
+    ipv6_address: "2001:20:3:4::4/64"
+    mask: "255.255.255.0"    
+    state: "up" 
+  - intf: "g0/1"
+    ip_address: "20.4.5.4"
+    ipv6_address: "2001:20:4:5::4/64"
+    mask: "255.255.255.0"
+    state: "up"
+  - intf: "g0/2"
+    ip_address: "20.2.4.4"
+    ipv6_address: "2001:20:2:4::4/64"
+    mask: "255.255.255.0"
+    state: "up"
+  - intf: "loopback0"
+    ip_address: "4.4.4.4"
+    ipv6_address: "2001::4:4:4:4/128"
+    mask: "255.255.255.255"
+    state: "up"

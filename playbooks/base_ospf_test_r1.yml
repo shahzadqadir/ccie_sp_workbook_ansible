@@ -1,0 +1,16 @@
+---
+
+- name: "PLAYBOOK TO TEST SEPARATION OF VARIABLES PER HOST"
+  hosts: 10.10.100.1
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospf on R1"
+      cisco.ios.ios_config:
+        src: "ospf/ipv4_base_ospf_ios.j2"
+      register: output
+    
+    - name: "print variables"
+      debug: var=output

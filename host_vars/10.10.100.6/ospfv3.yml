@@ -1,39 +1,22 @@
 ---
 
-interfaces:
-  - intf: "g0/0/0/0"
-    ip_address: "10.19.20.20"
-    ipv6_address: "2001:20:19:20::20/64"
-    mask: "24"
-    state: "up"   
-  - intf: "loopback0"
-    ip_address: "20.20.20.20"
-    ipv6_address: "2001::20:20:20:20/128"
-    mask: "32"
-    state: "up"
-
-ospf:
-  process_id: "100"
-  router_id: "20.20.20.20"
-  interfaces:
-    - intf: "g0/0/0/0"      
-      area: "0"
-      cost: ""
-      network_type: ""
-      authentication_type: ""
-      authentication_key: ""
-    - intf: "loopback0"
-      area: "0"
-      cost: ""
-      network_type: ""
-      authentication_type: ""
-      authentication_key: ""
-
 ospfv3:
   process_id: "100"
-  router_id: "20.20.20.20"
+  router_id: "6.6.6.6"
   interfaces:
-    - intf: "g0/0/0/0"      
+    - intf: "g0/0"      
+      area: "0"
+      cost: "1000"
+      network_type: ""
+      authentication_type: ""
+      authentication_key: ""
+    - intf: "g0/1"      
+      area: "0"
+      cost: ""
+      network_type: ""
+      authentication_type: ""
+      authentication_key: ""
+    - intf: "g0/2"      
       area: "0"
       cost: ""
       network_type: ""

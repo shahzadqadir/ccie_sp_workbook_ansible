@@ -9,7 +9,7 @@
 
     - name: "configure ospf cost on interfaces"
       cisco.ios.ios_config:
-        src: "ospf/task_2.7_ospf3_pathselection_ios.j2"
+        src: "ospf/task_2.8_ospf3_pathselection_ios.j2"
 
 
 - name: "PLAY 2 - OSPF PATH SELECTION XR ROUTERS"
@@ -21,4 +21,4 @@
 
     - name: "configure ospf cost"
       cisco.iosxr.iosxr_config:
-        src: "ospf/task_2.7_ospf3_pathselection_xr.j2"
+        src: "ospf/task_2.8_ospf3_pathselection_xr.j2"
