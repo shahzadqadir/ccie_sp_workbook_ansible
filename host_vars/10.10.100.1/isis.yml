@@ -8,5 +8,6 @@ isis:
     - intf: "g0/0"
       circuit_type: ""
       metric: ""
+      network_type: ""
   passive_interfaces:
     - intf: "loopback0"

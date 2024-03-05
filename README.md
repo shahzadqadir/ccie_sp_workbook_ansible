@@ -11,3 +11,5 @@
 - Task 2.7 - OSPFv3 Path Selection
 
 - Task 2.11 - Base ISIS Configurations
+- Task 2.12 - ISIS Network Types
+- Task 2.13 - Missed, BFD - issues with GNS3

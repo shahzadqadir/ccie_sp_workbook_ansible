@@ -1,0 +1,6 @@
+{% for interface in isis.interfaces %}
+  {% if interface.network_type %}
+    interface {{ interface.intf }}
+      isis network {{ interface.network_type }}
+  {% endif %}
+{% endfor %}
