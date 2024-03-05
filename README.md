@@ -12,4 +12,7 @@
 
 - Task 2.11 - Base ISIS Configurations
 - Task 2.12 - ISIS Network Types
-- Task 2.13 - Missed, BFD - issues with GNS3
+- Task 2.13 - Missing
+- Task 2.14 - Missed, BFD - issues with GNS3
+- Task 2.15 - Skipped for now - ISIS Authentication
+- Task 2.16 - Multi Level ISIS

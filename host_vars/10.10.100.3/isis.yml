@@ -2,19 +2,19 @@
 
 isis:
   process_id: ""
-  net: "49.0001.0000.0000.0003.00"
-  is_type: "level-2-only"
+  net: "49.1234.0000.0000.0003.00"
+  is_type: ""
   interfaces:
     - intf: "g0/0"
-      circuit_type: ""
+      circuit_type: "level-2-only"
       metric: ""
       network_type: ""
     - intf: "g0/1"
-      circuit_type: ""
+      circuit_type: "level-1"
       metric: ""
       network_type: ""
     - intf: "g0/2"
-      circuit_type: ""
+      circuit_type: "level-2-only"
       metric: ""
       network_type: ""
   passive_interfaces:

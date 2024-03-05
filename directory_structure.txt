@@ -1,0 +1,92 @@
+.
+├── directory_structure.txt
+├── group_vars
+│   ├── all.yml
+│   ├── ios_routers.yml
+│   └── xr_routers.yml
+├── hosts
+├── host_vars
+│   ├── 10.10.100.1
+│   │   ├── interfaces.yml
+│   │   ├── isis.yml
+│   │   ├── ospfv3.yml
+│   │   └── ospf.yml
+│   ├── 10.10.100.19
+│   │   ├── interfaces.yml
+│   │   ├── isis.yml
+│   │   ├── ospfv3.yml
+│   │   └── ospf.yml
+│   ├── 10.10.100.2
+│   │   ├── interfaces.yml
+│   │   ├── isis.yml
+│   │   ├── ospfv3.yml
+│   │   └── ospf.yml
+│   ├── 10.10.100.20
+│   │   ├── interfaces.yml
+│   │   ├── isis.yml
+│   │   ├── ospfv3.yml
+│   │   └── ospf.yml
+│   ├── 10.10.100.3
+│   │   ├── interfaces.yml
+│   │   ├── isis.yml
+│   │   ├── ospfv3.yml
+│   │   └── ospf.yml
+│   ├── 10.10.100.4
+│   │   ├── interfaces.yml
+│   │   ├── isis.yml
+│   │   ├── ospfv3.yml
+│   │   └── ospf.yml
+│   ├── 10.10.100.5
+│   │   ├── interfaces.yml
+│   │   ├── isis.yml
+│   │   ├── ospfv3.yml
+│   │   └── ospf.yml
+│   └── 10.10.100.6
+│       ├── interfaces.yml
+│       ├── isis.yml
+│       ├── ospfv3.yml
+│       └── ospf.yml
+├── ine_sp_v3_ipv4_topology_gns3_mgmt.png
+├── ine_sp_v3_isis_diagram.png
+├── known_issues.md
+├── lab_tasks.txt
+├── LICENSE
+├── playbooks
+│   ├── ansible.cfg
+│   ├── base_ospf_test_r1.yml
+│   ├── configure_interfaces.yml
+│   ├── configure_ospf2.yml
+│   ├── get_show_version.yml
+│   ├── task_2.11_isis_baseconfig.yml
+│   ├── task_2.12_isis_networktypes.yml
+│   ├── task_2.2_network_type.yml
+│   ├── task_2.3_path_selection.yml
+│   ├── task_2.5_ospf_authentication.yml
+│   ├── task_2.6_ospf3_base_config.yml
+│   ├── task_2.8_ospf3_pathselection.yml
+│   └── templates
+│       ├── base
+│       │   ├── interface_config_ios.j2
+│       │   └── interface_config_xr.j2
+│       ├── isis
+│       │   ├── task_2.11_isis_baseconfig_ios.j2
+│       │   ├── task_2.11_isis_baseconfig_xr.j2
+│       │   ├── task_2.12_isis_network_types_ios.j2
+│       │   └── task_2.12_isis_network_types_xr.j2
+│       └── ospf
+│           ├── ipv4_base_ospf_ios.j2
+│           ├── ipv4_base_ospf_xr.j2
+│           ├── task_2.2_network_types_ios.j2
+│           ├── task_2.2_network_types_xr.j2
+│           ├── task_2.3_path_selection_ios.j2
+│           ├── task_2.3_path_selection_xr.j2
+│           ├── task_2.5_ospf_authentication_ios.j2
+│           ├── task_2.5_ospf_authentication_xr.j2
+│           ├── task_2.6_ospf3_baseconfig_ios.j2
+│           ├── task_2.6_ospf3_baseconfig_xr.j2
+│           ├── task_2.8_ospf3_pathselection_ios.j2
+│           └── task_2.8_ospf3_pathselection_xr.j2
+├── prep_for_ansible.txt
+└── README.md
+
+15 directories, 74 files

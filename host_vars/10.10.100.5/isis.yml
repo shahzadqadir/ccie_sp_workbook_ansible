@@ -2,7 +2,7 @@
 
 isis:
   process_id: ""
-  net: "49.0001.0000.0000.0005.00"
+  net: "49.0056.0000.0000.0005.00"
   is_type: "level-2-only"
   interfaces:
     - intf: "g0/0"

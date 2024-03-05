@@ -1,0 +1,35 @@
+---
+
+- name: "PLAY 1 - CONFIGURE MULTI LEVEL ISIS - IOS ROUTERS"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure Multi Level ISIS"      
+      cisco.ios.ios_config:
+        src: "isis/task_2.16_mutli_level_isis_ios.j2"
+        save_when: "modified"
+
+      register: command_output
+    
+    - name: "Print configuration results"
+      debug: var=command_output
+
+
+- name: "PLAY 2 - CONFIGURE MUTLI LEVEL ISIS - XR ROUTERS"
+  hosts: xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure Multi Level ISIS"
+      cisco.iosxr.iosxr_config:
+        src: "isis/task_2.16_multi_level_isis_xr.j2"
+
+      register: command_output
+    
+    - name: "Print configuration results"
+      debug: var=command_output
