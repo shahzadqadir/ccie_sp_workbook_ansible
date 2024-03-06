@@ -3,6 +3,7 @@
 isis:
   process_id: "1"
   net: "49.1920.0000.0000.0019.00"
+  metric_style: "wide"
   is_type: "level-2-only"
   l2tol1_route_leaking_acl:
     - subnet: ""
@@ -16,18 +17,21 @@ isis:
     - intf: "g0/0/0/0"
       circuit_type: ""
       metric: ""
+      ipv6_metric: "100"
       network_type: "point-to-point"
       enable_ipv4: true
       enable_ipv6: true
     - intf: "g0/0/0/1"
       circuit_type: ""
-      metric: ""
+      metric: "100"
+      ipv6_metric: ""
       network_type: ""
       enable_ipv4: true
       enable_ipv6: true
     - intf: "g0/0/0/2"
       circuit_type: ""
       metric: ""
+      ipv6_metric: ""
       network_type: ""
       enable_ipv4: true
       enable_ipv6: true

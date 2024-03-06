@@ -9,7 +9,7 @@ isis:
   interfaces:
     - intf: "g0/0"
       circuit_type: ""
-      metric: ""
+      metric: "100"
       network_type: ""
       enable_ipv4: true
       enable_ipv6: true

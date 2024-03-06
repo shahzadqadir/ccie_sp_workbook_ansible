@@ -4,6 +4,7 @@ isis:
   process_id: ""
   net: "49.0001.0000.0000.0001.00"
   is_type: "level-2"
+  metric_style: "wide"
   l2tol1_route_leaking_acl: ""
   l1tol2_filtering: ""
 
@@ -13,6 +14,7 @@ isis:
       enable_ipv6: true
       circuit_type: ""
       metric: ""
+      ipv6_metric: ""
       network_type: ""
   passive_interfaces:
     - intf: "loopback0"

@@ -1,0 +1,12 @@
+router isis {{ isis.process_id }}
+    {% if isis.metric_style %}
+        address-family ipv4 unicast metric-style {{ isis.metric_style }}
+    {% endif %}
+    {% for interface in isis.interfaces %}
+        {% if interface.metric %}
+            address-family ipv4 unicast metric {{ interface.metric }}
+        {% endif %}
+        {% if interface.ipv6_metric %}
+            address-family ipv6 unicast metric {{ interface.ipv6_metric }}
+        {% endif %}
+    {% endfor %}

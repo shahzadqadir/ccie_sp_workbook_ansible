@@ -10,18 +10,21 @@ isis:
     - intf: "g0/0"
       circuit_type: ""
       metric: ""
+      ipv6_metric: ""
       network_type: ""
       enable_ipv4: true
       enable_ipv6: true
     - intf: "g0/1"
       circuit_type: ""
       metric: ""
+      ipv6_metric: ""
       network_type: ""
       enable_ipv4: true
       enable_ipv6: true
     - intf: "g0/2"
       circuit_type: ""
       metric: ""
+      ipv6_metric: ""
       network_type: "point-to-point"
       enable_ipv4: true
       enable_ipv6: true
