@@ -1,0 +1,16 @@
+{% if isis.l2tol1_route_leaking_acl %}
+    prefix-set LEVEL2INTOLEVEL1_SET
+  {% for prefix in isis.l2tol1_route_leaking_acl %}
+    {{prefix.subnet}}/{{prefix.wildcard}}{{prefix.next}}
+  {% endfor %} 
+  end-set
+  route-policy LEVEL2INTOLEVEL1_POLICY
+   if destination in LEVEL2INTOLEVEL1_SET then pass endif
+   end-policy
+{% endif %}
+
+router isis {{ isis.process_id }}
+  address-family ipv4 unicast
+    propagate level 2 into level 1 route-policy LEVEL2INTOLEVEL1_POLICY
+
+

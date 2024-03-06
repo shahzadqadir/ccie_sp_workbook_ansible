@@ -4,18 +4,30 @@ isis:
   process_id: ""
   net: "49.1234.0000.0000.0003.00"
   is_type: ""
+  l2tol1_route_leaking_acl:
+    - subnet: ""
+      wildcard: ""
+  l1tol2_filtering:
+    - subnet: ""
+      wildcard: ""
   interfaces:
     - intf: "g0/0"
       circuit_type: "level-2-only"
       metric: ""
       network_type: ""
+      enable_ipv4: true
+      enable_ipv6: true
     - intf: "g0/1"
       circuit_type: "level-1"
       metric: ""
       network_type: ""
+      enable_ipv4: true
+      enable_ipv6: true
     - intf: "g0/2"
       circuit_type: "level-2-only"
       metric: ""
       network_type: ""
+      enable_ipv4: true
+      enable_ipv6: true
   passive_interfaces:
     - intf: "loopback0"

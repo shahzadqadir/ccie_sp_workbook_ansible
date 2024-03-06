@@ -1,0 +1,24 @@
+{% if isis.l2tol1_route_leaking_acl %}
+    access-list 105 remark ISIS Level 2 to Level 1 Routes
+  {% for prefix in isis.l2tol1_route_leaking_acl %}
+    access-list 105 permit ip {{ prefix.subnet }} {{ prefix.wildcard }} any
+  {% endfor %}  
+{% endif %}
+
+{% if isis.l1tol2_filtering %}
+    access-list 106 remark ISIS Level 1 to Level 2 Filter
+  {% for prefix in isis.l1tol2_filtering %}
+    access-list 106 deny ip {{ prefix.subnet }} {{ prefix.wildcard }} any
+  {% endfor %}
+    access-list 106 permit ip any any   
+
+{% endif %}
+
+router isis
+  redistribute isis ip level-2 into level-1 distribute-list 105
+  redistribute isis ip level-1 into level-2 distribute-list 106
+
+  
+
+      
+      

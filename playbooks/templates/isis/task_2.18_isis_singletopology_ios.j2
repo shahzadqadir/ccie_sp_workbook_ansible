@@ -1,0 +1,23 @@
+{% if isis.process_id %}
+  router isis {{ isis.process_id }}
+{% else %}
+  router isis
+{% endif %}
+    net {{ isis.net }}
+    {% if isis.is_type %}
+      is-type {{ isis.is_type }}
+    {% endif %}
+    {% for interface in isis.passive_interfaces %}
+      passive-interface {{ interface.intf }}
+    {% endfor %}
+{% for interface in isis.interfaces %}
+  interface {{ interface.intf }}
+  {% if isis.process_id %}
+    ip router isis {{ isis.process_id }}
+    {% if interface.enable_ipv6 %}
+      ipv6 router isis
+    {% endif %}
+  {% else %}
+    ip router isis
+  {% endif %}
+{% endfor %}

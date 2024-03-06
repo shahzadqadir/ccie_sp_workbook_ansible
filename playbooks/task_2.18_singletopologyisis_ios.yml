@@ -1,0 +1,23 @@
+---
+
+- name: "PLAY 1 - ENABLE SINGLE TOPOLOGY ISIS IOS ROUTERS"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure ISIS"
+      cisco.ios.ios_config:
+        src: "isis/task_2.18_isis_singletopology_ios.j2"
+
+- name: "PLAY 2 - ENABLE SINGLE TOPOLOGY ISIS XR ROUTERS"
+  hosts: xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure ISIS XR"
+      cisco.iosxr.iosxr_config:
+        src: "isis/task_2.18_isis_singletopology_xr.j2"

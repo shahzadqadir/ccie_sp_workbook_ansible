@@ -16,3 +16,5 @@
 - Task 2.14 - Missed, BFD - issues with GNS3
 - Task 2.15 - Skipped for now - ISIS Authentication
 - Task 2.16 - Multi Level ISIS
+- Task 2.17 - Route Leaking
+- Task 2.18 - Single Topology ISIS
