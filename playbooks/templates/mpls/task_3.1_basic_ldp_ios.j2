@@ -1,0 +1,6 @@
+mpls label protocol {{ mpls.protocol }}
+mpls ldp router-id {{ mpls.router_id }}
+{% for interface in interfaces %}
+  interface {{ interface.intf }}
+    mpls ip
+{% endfor %}

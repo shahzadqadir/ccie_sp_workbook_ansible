@@ -1,0 +1,23 @@
+---
+
+- name: "PLAY 1 - CONFIGURE BASIC LDP ON IOS ROUTERS"
+  hosts: mpls_ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure MPLS - LDP"
+      cisco.ios.ios_config:
+        src: "mpls/task_3.1_basic_ldp_ios.j2"
+        save_when: "modified"
+
+    - name: "Check MPLS Neighbors"
+      cisco.ios.ios_command:
+        commands:
+          - show mpls int
+          - show mpls ldp neighbor
+      register: output
+
+    - name: "Print MPLS Status"
+      debug: var=output

@@ -1,0 +1,9 @@
+---
+
+mpls:
+  protocol: "ldp"
+  router_id: "loopback0"
+  interfaces:
+    - intf: "g0/1"
+    - intf: "g0/2"
+

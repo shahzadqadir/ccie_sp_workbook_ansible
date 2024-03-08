@@ -32,3 +32,13 @@ customer_xr_router
 [prod:children]
 core
 edge
+
+[mpls_ios_routers]
+10.10.100.2
+10.10.100.3
+10.10.100.4
+10.10.100.5
+10.10.100.6
+
+[mpls_xr_routers]
+10.10.100.19
