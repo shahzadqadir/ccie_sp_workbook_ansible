@@ -1,0 +1,24 @@
+{% if mpls.group_acl %}
+  ip access-list standard {{mpls.group_acl.name}}
+    {% for host in mpls.group_acl.hosts %}
+      permit host {{ host}}
+    {% endfor %}
+{% endif %}
+
+{% for neighbor in mpls.neighbors %}
+  {% if neighbor.authenticate %}
+    mpls ldp neighbor {{ neighbor.host }} password {{ neighbor.password }}
+  {% endif %}
+{% endfor %}
+
+{% if mpls.password_required %}
+  mpls ldp password required
+{% endif %}
+
+{% if mpls.option_1 %}
+  mpls ldp password option 1 for {{ mpls.group_acl.name }} 0 {{mpls.option_1.password }}
+{% endif %}
+
+{% if mpls.fallback %}
+  mpls ldp password fallback 0 {{ mpls.fallback.password }}
+{% endif %}

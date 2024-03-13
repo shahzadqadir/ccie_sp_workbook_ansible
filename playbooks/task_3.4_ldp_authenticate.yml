@@ -1,0 +1,24 @@
+---
+
+- name: "PLAY 1 - LDP Authentication FOR IOX"
+  hosts: mpls_ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure MPLS Authentication"
+      cisco.ios.ios_config:
+        src: "mpls/task_3.4_ldp_authentication_ios.j2"
+
+
+- name: "PLAY 2 - LDP AUTHENTICATION FOR XR"
+  hosts: mpls_xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure MPLS Authentication for XR Routers"
+      cisco.iosxr.iosxr_config:
+        src: "mpls/task_3.4_ldp_authentication_xr.j2"

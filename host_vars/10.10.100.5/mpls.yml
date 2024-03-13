@@ -1,6 +1,7 @@
 mpls:
   protocol: "ldp"
   router_id: "loopback0"
+  password_required: True
   interfaces:
     - intf: "g0/0"
     - intf: "g0/1"
@@ -12,3 +13,8 @@ mpls:
     - igp: "isis"
       process_id: ""
       enable: True
+  neighbors: ""
+  group_acl: ""    
+  option_1: ""
+  fallback:
+    password: "R5PASS"

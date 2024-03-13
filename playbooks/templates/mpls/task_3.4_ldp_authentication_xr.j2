@@ -1,0 +1,9 @@
+{% for neighbor in mpls.neighbors %}
+  {% if neighbor.authenticate %}
+    mpls ldp neighbor {{ neighbor.host }}:0 password clear {{ neighbor.password }}
+  {% endif %}
+{% endfor %}
+
+{% if mpls.fallback %}
+  mpls ldp neighbor password clear {{ mpls.fallback.password }}
+{% endif %}
