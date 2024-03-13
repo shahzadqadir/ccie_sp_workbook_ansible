@@ -1,0 +1,57 @@
+---
+
+- name: "PLAY 1 - CONFIGURE MPLS LDP AUTO-CONFIG IOS"
+  hosts: mpls_ios_routers
+  gather_facts: false
+  connection: network_cli
+  
+
+  tasks:
+
+    - name: "Configure LDP for OSPF"
+      cisco.ios.ios_ospfv2:
+        config:
+          processes:
+            - process_id: 100
+              mpls:
+                ldp:
+                  autoconfig:
+                    set: true
+
+      register: output
+
+    - name: "Print configurations"
+      debug: var=output
+
+
+- name: "PLAY 2 - CONFIGURE OSPF Auto Config ON IOS XR ROUTERS"
+  hosts: mpls_xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure LDP on IOS XR Routers"
+      cisco.iosxr.iosxr_ospfv2:
+        config:
+          processes:
+            - process_id: 100
+              mpls:
+                ldp:
+                  auto_config: true
+
+      register: output
+    
+    - name: "Print configurations"
+      debug: var=output
+
+- name: "PLAY 3 - CONFIGURE ISIS AUTO CONFIG IOS-XR ROUTERS"
+  hosts: mpls_xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "Configure ISIS LDP Auto Config"
+      cisco.iosxr.iosxr_config:
+        src: "mpls/task_3.2_3.3_autoconfig_xr.j2"

@@ -6,4 +6,11 @@ mpls:
   interfaces:
     - intf: "g0/1"
     - intf: "g0/2"
+  autoconfig:
+    - igp: "ospf"
+      process_id: "100"
+      enable: False
+    - igp: "isis"
+      process_id: ""
+      enable: True
 

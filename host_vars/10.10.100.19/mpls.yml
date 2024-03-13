@@ -1,6 +1,15 @@
+---
+
 mpls:
   protocol: "ldp"
   router_id: "loopback0"
   interfaces:
     - intf: "g0/0/0/0"
     - intf: "g0/0/0/1"
+  autoconfig:
+    - igp: "ospf"
+      process_id: "100"
+      enable: False
+    - igp: "isis"
+      process_id: ""
+      enable: True
