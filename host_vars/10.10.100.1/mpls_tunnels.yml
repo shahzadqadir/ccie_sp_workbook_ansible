@@ -1,0 +1,13 @@
+---
+
+bgp:
+  as: "1"
+  peers:
+    - host: "10.1.2.2"
+      remote_as: "100"
+      update_source: ""
+      next_hop_self: false
+  networks:
+    - subnet: "1.1.1.1"
+      mask: "255.255.255.255"
+      

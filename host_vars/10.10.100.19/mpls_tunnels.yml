@@ -1,0 +1,15 @@
+---
+
+bgp:
+  as: "100"
+  peers:
+    - host: "10.19.20.20"
+      remote_as: "20"
+      update_source: ""
+      next_hop_self: false
+    - host: "2.2.2.2"
+      remote_as: "100"
+      update_source: "loopback0"
+      next_hop_self: true
+  networks: ""
+  route_policy: ""

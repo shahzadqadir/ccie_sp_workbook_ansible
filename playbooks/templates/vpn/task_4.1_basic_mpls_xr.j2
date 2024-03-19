@@ -1,0 +1,27 @@
+
+route-policy DEFAULT_EBGP
+    pass
+    end-policy
+    
+router bgp {{ bgp.as }}
+    address-family ipv4 unicast
+    {% for neighbor in bgp.peers %}
+        neighbor {{ neighbor.host }} remote-as {{ neighbor.remote_as}}
+        neighbor {{ neighbor.host }} address-family ipv4 unicast route-policy DEFAULT_EBGP in
+        neighbor {{ neighbor.host }} address-family ipv4 unicast route-policy DEFAULT_EBGP out
+        {% if neighbor.update_source %}
+            neighbor {{ neighbor.host }} update-source {{ neighbor.update_source }}
+        {% endif %}
+        {% if neighbor.next_hop_self %}
+            neighbor {{ neighbor.host }} 
+            address-family ipv4 unicast
+                next-hop-self
+        {% endif %}
+    {% endfor %}
+    {% if bgp.networks %}
+        address-family ipv4 unicast
+        {% for network in bgp.networks %}
+            network {{ network.subnet }}/{{ network.mask }}
+        {% endfor %}
+    {% endif %}
+    

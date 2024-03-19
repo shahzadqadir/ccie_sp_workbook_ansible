@@ -1,0 +1,30 @@
+---
+
+- name: "Play 1 - Configure MPLS Tunnels - IOS"
+  hosts: 10.10.100.1, 10.10.100.2
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "Configure BGP on Edge IOS Routers"
+      cisco.ios.ios_config:
+        src: "vpn/task_4.1_basic_mpls_ios.j2"
+      register: output
+    
+    - name: "Print configurations"
+      debug: var=output
+
+
+- name: "PLAY 2 - Configure MPLS Tunnels - XR"
+  hosts: 10.10.100.19, 10.10.100.20
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "Configure BGP on Edge XR Routers"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/task_4.1_basic_mpls_xr.j2"
+      register: output
+
+    - name: "Print Configurations"
+      debug: var=output

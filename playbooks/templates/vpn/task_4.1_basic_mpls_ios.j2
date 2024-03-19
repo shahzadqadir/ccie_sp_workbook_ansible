@@ -1,0 +1,15 @@
+router bgp {{ bgp.as }}
+    {% for neighbor in bgp.peers %}
+        neighbor {{ neighbor.host }} remote-as {{ neighbor.remote_as}}
+        {% if neighbor.update_source %}
+            neighbor {{ neighbor.host }} update-source {{ neighbor.update_source }}
+        {% endif %}
+        {% if neighbor.next_hop_self %}
+            neighbor {{ neighbor.host }} next-hop-self
+        {% endif %}
+    {% endfor %}
+    {% if bgp.networks %}
+        {% for network in bgp.networks %}
+            network {{ network.subnet }} mask {{ network.mask }}
+        {% endfor %}
+    {% endif %}
