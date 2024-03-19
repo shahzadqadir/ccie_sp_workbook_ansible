@@ -19,6 +19,10 @@
 - Task 2.17 - Route Leaking
 - Task 2.18 - Single Topology ISIS
 
-- Task 3.1 - Basic LDP
+- Task 3.1 -   Basic LDP
+- Task 3.2,3 - MPLS Autoconfig
+- Task 3.4 -   LDP Authentication
+
+- Task 4.1 -  Basic MPLS Tunnels
 
 https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=4C656B3F71248B52FABF
