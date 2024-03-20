@@ -8,7 +8,7 @@
   tasks:
     - name: "Configure BGP on Edge IOS Routers"
       cisco.ios.ios_config:
-        src: "vpn/task_4.1_basic_mpls_ios.j2"
+        src: "vpn/all_tasks_bgp_ios.j2"
       register: output
     
     - name: "Print configurations"
@@ -23,7 +23,7 @@
   tasks:
     - name: "Configure BGP on Edge XR Routers"
       cisco.iosxr.iosxr_config:
-        src: "vpn/task_4.1_basic_mpls_xr.j2"
+        src: "vpn/all_tasks_bgp_xr.j2"
       register: output
 
     - name: "Print Configurations"

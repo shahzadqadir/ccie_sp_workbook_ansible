@@ -1,14 +1,16 @@
-
 route-policy DEFAULT_EBGP
     pass
     end-policy
-    
+
 router bgp {{ bgp.as }}
     address-family ipv4 unicast
+    address-family vpnv4 unicast
     {% for neighbor in bgp.peers %}
         neighbor {{ neighbor.host }} remote-as {{ neighbor.remote_as}}
-        neighbor {{ neighbor.host }} address-family ipv4 unicast route-policy DEFAULT_EBGP in
-        neighbor {{ neighbor.host }} address-family ipv4 unicast route-policy DEFAULT_EBGP out
+        {% for af in neighbor.address_families %}
+            neighbor {{ neighbor.host }} address-family {{ af }} unicast route-policy DEFAULT_EBGP in
+            neighbor {{ neighbor.host }} address-family {{ af }} unicast route-policy DEFAULT_EBGP out
+        {% endfor %}        
         {% if neighbor.update_source %}
             neighbor {{ neighbor.host }} update-source {{ neighbor.update_source }}
         {% endif %}

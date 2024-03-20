@@ -1,0 +1,23 @@
+no router bgp {{ bgp.as }}
+router bgp {{ bgp.as }}
+    no bgp default ipv4-unicast
+    {% for neighbor in bgp.peers %}
+        neighbor {{ neighbor.host }} remote-as {{ neighbor.remote_as}}
+        {% if neighbor.update_source %}
+            neighbor {{ neighbor.host }} update-source {{ neighbor.update_source }}
+        {% endif %}
+        {% if neighbor.next_hop_self %}
+            neighbor {{ neighbor.host }} next-hop-self
+        {% endif %}
+        {% if neighbor.address_families %}
+            {% for af in neighbor.address_families %}
+                address-family {{ af }} unicast
+                    neighbor {{ neighbor.host }} activate
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    {% if bgp.networks %}
+        {% for network in bgp.networks %}
+            network {{ network.subnet }} mask {{ network.mask }}
+        {% endfor %}
+    {% endif %}
