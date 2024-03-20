@@ -3,16 +3,10 @@
 bgp:
   as: "100"
   peers:
-    - host: "10.1.2.1"
-      remote_as: "1"
-      update_source: ""
-      next_hop_self: false
-      address_families:
-        - "ipv4"
     - host: "19.19.19.19"
       remote_as: "100"
       update_source: "loopback0"
       next_hop_self: true
       address_families:
-        - "ipv4"
+        - "vpnv4"
   networks: ""
