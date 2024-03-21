@@ -1,7 +1,7 @@
 ---
 
 - name: "Play 1 - Configure MPLS Tunnels - IOS"
-  hosts: 10.10.100.2
+  hosts: edge_ios
   gather_facts: false
   connection: network_cli
 
@@ -15,16 +15,13 @@
     - name: "Print configurations"
       debug: var=output
 
-    - name: "Configure L3VPN for Customer with Static Routing"
+    - name: "Configure L3VPN for Customer Routing IOS Routers"
       cisco.ios.ios_config:
-        src: "vpn/task_4.2_l3vpn_static_ios.j2"
+        src: "vpn/l3vpn_customer_routing_ios.j2"
       register: output
       
     - name: "Print configurations"
       debug: var=output
-
-
-
 
 - name: "PLAY 2 - Configure MPLS Tunnels - XR"
   hosts: edge_xr
@@ -40,11 +37,10 @@
     - name: "Print Configurations"
       debug: var=output
     
-    - name: "Configure L3VPN for Customer with Static Routing"
+    - name: "Configure L3VPN for Customer Routing"
       cisco.iosxr.iosxr_config:
-        src: "vpn/task_4.2_l3vpn_static_xr.j2"
+        src: "vpn/l3vpn_customer_routing_xr.j2"
       register: output
 
     - name: "Print configurations"
       debug: var=output
-      

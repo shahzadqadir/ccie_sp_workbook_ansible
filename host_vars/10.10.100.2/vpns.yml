@@ -13,9 +13,10 @@ l3vpns:
         mask: "255.255.255.0"
     routing:
       type: "ospf"
-      process: "100"
+      process: "100"      
       metric: "128"
       networks:
         - subnet: "10.1.2.0"
           mask: "0.0.0.255"
+          area: "0"
           next_hop: ""

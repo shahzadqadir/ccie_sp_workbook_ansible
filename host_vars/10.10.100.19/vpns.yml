@@ -18,5 +18,6 @@ l3vpns:
       networks:
         - subnet: "10.19.20.0"
           mask: "24"
+          area: "0"
           next_hop: ""
           

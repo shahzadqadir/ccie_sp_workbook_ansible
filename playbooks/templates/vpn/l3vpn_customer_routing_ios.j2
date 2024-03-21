@@ -36,6 +36,16 @@ router eigrp {{ l3vpn.routing.as }}
 router bgp {{ bgp.as }}
   address-family ipv4 unicast vrf {{ l3vpn.vrf }}
     redistribute eigrp {{ l3vpn.routing.as }} metric {{ l3vpn.routing.metric }}
+
+{% elif l3vpn.routing.type == "ospf" %}
+router ospf {{ l3vpn.routing.process }} vrf {{ l3vpn.vrf }}
+  {% for network in l3vpn.routing.networks %}
+  network {{ network.subnet }} {{ network.mask }} area {{ network.area }}
+  {% endfor %}
+  redistribute bgp {{ bgp.as }} subnets            
+router bgp {{ bgp.as }}
+  address-family ipv4 unicast vrf {{ l3vpn.vrf }}
+    redistribute ospf {{ l3vpn.routing.process }} metric {{ l3vpn.routing.metric }}
 {% endif %}
 
 {% endif %}
