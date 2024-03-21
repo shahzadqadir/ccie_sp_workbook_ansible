@@ -17,19 +17,19 @@
 {% endfor %}
 
 {% for l3vpn in l3vpns %}
-  {% if l3vpn.routing %}    
+{% if l3vpn.routing %}    
 
-  {% if l3vpn.routing.type == "static" %}
-  {% for network in l3vpn.routing.networks %}
-    router static vrf {{ l3vpn.vrf }} address-family ipv4 unicast {{ network.subnet }}/{{ network.mask }} {{ network.next_hop }}
-  {% endfor %}            
+{% if l3vpn.routing.type == "static" %}
 router bgp {{ bgp.as }}
   vrf {{ l3vpn.vrf }}
   rd {{ l3vpn.rd }}
   address-family ipv4 unicast 
     redistribute static metric {{ l3vpn.routing.metric }}
-  {% endif %}
+  {% for network in l3vpn.routing.networks %}
+    router static vrf {{ l3vpn.vrf }} address-family ipv4 unicast {{ network.subnet }}/{{ network.mask }} {{ network.next_hop }}
+  {% endfor %}            
+{% endif %}
 
-  {% endif %}
+{% endif %}
 {% endfor %}
 
