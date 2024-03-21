@@ -12,8 +12,8 @@ l3vpns:
         ipv4_add: "10.1.2.2"
         mask: "255.255.255.0"
     routing:
-      type: "eigrp"
-      as: "100"
+      type: "ospf"
+      process: "100"
       metric: "128"
       networks:
         - subnet: "10.1.2.0"
