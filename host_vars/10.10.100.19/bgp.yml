@@ -8,7 +8,7 @@ bgp:
       update_source: "loopback0"
       next_hop_self: true
       address_families:
-        - "ipv4"
+        - "vpnv4"
 
   networks: ""
   route_policy: ""

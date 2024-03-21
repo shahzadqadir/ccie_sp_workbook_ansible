@@ -1,0 +1,32 @@
+{% for l3vpn in l3vpns %}
+  vrf definition {{ l3vpn.vrf }}
+  rd {{ l3vpn.rd }}
+  {% for af in l3vpn.address_families %}
+    address-family {{ af.family }}
+      route-target import {{ af.rt_import }}
+      route-target export {{ af.rt_export }}
+  {% endfor %}
+  {% for interface in l3vpn.interfaces %}
+    interface {{ interface.intf }}
+    no ip address
+    no ipv6 address
+    vrf forwarding {{ l3vpn.vrf }}
+    {% if interface.ipv4_add %}
+      ip address {{ interface.ipv4_add }} {{ interface.mask }}
+    {% endif %}
+  {% endfor %}    
+{% endfor %}
+
+{% for l3vpn in l3vpns %}
+  {% if l3vpn.routing %}    
+{% if l3vpn.routing.type == "static" %}
+  {% for network in l3vpn.routing.networks %}
+    ip route vrf {{ l3vpn.vrf }} {{ network.subnet }} {{ network.mask }} {{ network.next_hop }}
+  {% endfor %}            
+router bgp {{ bgp.as }}
+  address-family ipv4 unicast vrf {{ l3vpn.vrf }}
+    redistribute static metric {{ l3vpn.routing.metric }}
+{% endif %}
+  {% endif %}
+{% endfor %}
+

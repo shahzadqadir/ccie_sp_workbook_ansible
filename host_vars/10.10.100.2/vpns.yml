@@ -3,5 +3,18 @@
 l3vpns:
   - vrf: "VPN_A"
     rd: "100:1"
-    rt_import: "100:1"
-    rt_export: "100:1"
+    address_families:
+      - family: "ipv4"
+        rt_import: "100:1"
+        rt_export: "100:1"
+    interfaces:
+      - intf: "g0/0"
+        ipv4_add: "10.1.2.2"
+        mask: "255.255.255.0"
+    routing:
+      type: "static"
+      metric: "128"
+      networks:
+        - subnet: "1.1.1.1"
+          mask: "255.255.255.255"
+          next_hop: "10.1.2.1"
