@@ -12,9 +12,10 @@ l3vpns:
         ipv4_add: "10.1.2.2"
         mask: "255.255.255.0"
     routing:
-      type: "static"
+      type: "eigrp"
+      as: "100"
       metric: "128"
       networks:
-        - subnet: "1.1.1.1"
-          mask: "255.255.255.255"
-          next_hop: "10.1.2.1"
+        - subnet: "10.1.2.0"
+          mask: "0.0.0.255"
+          next_hop: ""
