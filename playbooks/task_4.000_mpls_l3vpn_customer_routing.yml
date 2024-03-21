@@ -1,0 +1,23 @@
+---
+
+- name: "PLAY 2 - Configure MPLS Tunnels - XR"
+  hosts: edge_xr
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "Configure BGP on Edge XR Routers"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/all_tasks_bgp_xr.j2"
+      register: output
+
+    - name: "Print Configurations"
+      debug: var=output
+    
+    - name: "Configure L3VPN for Customer with Static Routing"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/task_4.2_l3vpn_static_xr.j2"
+      register: output
+
+    - name: "Print configurations"
+      debug: var=output
