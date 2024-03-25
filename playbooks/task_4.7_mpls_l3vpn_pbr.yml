@@ -28,7 +28,7 @@
       debug: var=output
 
 - name: "PLAY 3 - Configure VRFs, Interfaces, Routing - IOS"
-  hosts: 10.10.100.2
+  hosts: 10.10.100.2, 10.10.100.4, 10.10.100.5
   gather_facts: false
   connection: network_cli
 
