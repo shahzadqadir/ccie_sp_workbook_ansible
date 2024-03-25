@@ -1,7 +1,7 @@
 ---
 
 - name: "PLAY 1 - CONFIGURE IOS INTERFACES"
-  hosts: ios_routers
+  hosts: all_ios_network
   gather_facts: false
   connection: network_cli
 
@@ -19,5 +19,5 @@
   tasks:
 
     - name: "configure interfaces xr routers"
-      iosxr_config:
+      cisco.iosxr.iosxr_config:
         src: "base/interface_config_xr.j2"
