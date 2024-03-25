@@ -1,0 +1,185 @@
+Configure extra peerings from R2 to R5, and R6
+
+r2
+
+router bgp 100
+ neighbor 4.4.4.4 remote-as 100
+ neighbor 4.4.4.4 update-source loopback0
+ neighbor 5.5.5.5 remote-as 100
+ neighbor 5.5.5.5 update-source loopback0
+ address-family vpnv4 unicast
+  neighbor 4.4.4.4 activate
+  neighbor 5.5.5.5 activate
+
+r4 & r5
+
+router bgp 100
+ neighbor 2.2.2.2 remote-as 100
+ neighbor 2.2.2.2 update-source loopback0
+ address-family vpnv4 unicast
+  neighbor 2.2.2.2 activate
+
+----
+configure VRFs VPN_A, VPN_B, VPN_C on R2, R4, R5, XR1
+
+R2
+
+vrf definition VPN_A
+  rd 100:1
+  address-family ipv4
+   route-target both 100:1
+vrf definition VPN_B
+  rd 100:2
+  address-family ipv4
+   route-target both 100:2
+vrf definition VPN_C
+  rd 100:3
+  address-family ipv4
+   route-target both 100:3
+
+R4
+
+vrf definition VPN_B
+  rd 100:2
+  address-family ipv4
+   route-target both 100:2
+
+interface g0/4
+ vrf forwarding VPN_B
+ ip add 10.4.7.4 255.255.255.0
+
+R5
+
+vrf definition VPN_C
+  rd 100:3
+  address-family ipv4
+   route-target both 100:3
+
+interface g0/4
+ vrf forwarding VPN_C
+ ip add 10.5.8.5 255.255.255.0
+ ipv6 address 2001:10:5:8::5/64
+
+XR1
+
+vrf VPN_A
+ address-family ipv4 unicast
+  import route-target
+   100:1
+  !
+  export route-target
+   100:1
+  !
+
+interface g0/0/0/2
+ no ip add
+ no ipv6 add
+ vrf VPN_A
+ ip add 10.19.20.19/24
+
+router bgp 100
+ vrf VPN_A
+  rd 100:1
+
+----------
+Configure Static Routing on R4, R5, XR1
+
+R2
+
+ip route vrf VPN_A 1.1.1.20 255.255.255.255 10.1.2.1
+ip route vrf VPN_B 1.1.1.7 255.255.255.255 10.1.2.1
+ip route vrf VPN_C 1.1.1.8 255.255.255.255 10.1.2.1
+
+router bgp 100
+ address-family ipv4 unicast vrf VPN_A
+  redistribute static metric 10
+ address-family ipv4 unicast vrf VPN_B
+  redistribute static metric 10
+ address-family ipv4 unicast vrf VPN_C
+  redistribute static metric 10
+
+R4
+
+ip route vrf VPN_B 7.7.7.7 255.255.255.255 10.4.7.7
+
+router bgp 100
+ address-family ipv4 unicast vrf VPN_B
+  redistribute static metric 10
+
+
+R5
+
+ip route vrf VPN_C 8.8.8.8 255.255.255.255 10.5.8.8
+
+router bgp 100
+ address-family ipv4 unicast vrf VPN_C
+  redistribute static metric 10
+
+XR
+
+router static vrf VPN_A address-family ipv4 unicast 20.20.20.20/32 10.19.20.20
+
+router bgp 100
+ vrf VPN_A
+ rd 100:1
+   address-family ipv4 unicast
+   redistribute static metric 10
+
+
+--------------------------
+Configure PBR on R2
+
+access-list 7 permit host 1.1.1.7
+access-list 8 permit host 1.1.1.8
+access-list 20 permit host 1.1.1.20
+
+route-map VRF_SELECTION_PBR permit 10
+ match ip address 20
+ set vrf VPN_A
+
+route-map VRF_SELECTION_PBR permit 20
+ match ip address 7
+ set vrf VPN_B
+
+route-map VRF_SELECTION_PBR permit 30
+ match ip address 8
+ set vrf VPN_C
+
+interface g0/0
+ ip policy route-map VRF_SELECTION_PBR
+ ip vrf receive VPN_A
+ ip vrf receive VPN_B
+ ip vrf receive VPN_C
+
+----------------
+Default Routes on CPEs
+
+R1
+
+ip route 0.0.0.0 0.0.0.0 10.1.2.2
+
+R7
+
+ip route 0.0.0.0 0.0.0.0 10.4.7.4
+
+R8
+
+ip route 0.0.0.0 0.0.0.0 10.5.8.5
+
+XR2
+
+router static address-family ipv4 unicast 0.0.0.0/0 10.19.20.19
+
+-----------------------
+Create required interfaces on R1
+
+R1
+
+interface loopback1
+ ip add 1.1.1.7 255.255.255.255
+
+interface loopback2
+ ip add 1.1.1.8 255.255.255.255
+
+interface loopback3
+ ip add 1.1.1.20 255.255.255.255

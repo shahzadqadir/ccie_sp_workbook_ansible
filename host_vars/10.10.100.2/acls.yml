@@ -1,0 +1,14 @@
+---
+acls:
+  - number: "20"
+    networks:
+      - subnet: "1.1.1.20"
+        wildcard_mask: "0.0.0.0"
+  - number: "7"
+    networks:
+    - subnet: "1.1.1.7"
+      wildcard_mask: "0.0.0.0"
+  - number: "8"
+    networks:
+    - subnet: "1.1.1.8"
+      wildcard_mask: "0.0.0.0"

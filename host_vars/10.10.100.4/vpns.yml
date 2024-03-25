@@ -1,0 +1,20 @@
+---
+
+l3vpns:
+  - vrf: "VPN_B"
+    rd: "100:2"
+    address_families:
+      - family: "ipv4"
+        rt_import: "100:2"
+        rt_export: "100:2"
+    interfaces:
+      - intf: "g0/4"
+        ipv4_add: "10.4.7.4"
+        mask: "255.255.255.0"
+    routing:
+      type: "static"
+      metric: "10"
+      networks:
+        - subnet: "7.7.7.7"
+          mask: "255.255.255.255"
+          next_hop: "10.4.7.7"

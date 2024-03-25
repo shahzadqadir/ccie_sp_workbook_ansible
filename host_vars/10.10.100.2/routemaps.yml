@@ -1,0 +1,15 @@
+---
+
+route_maps:
+  - name: "VRF_SELECTION_PBR"
+    lines:
+      - number: "10"
+        acl: "20"
+        action: "set vrf VPN_A"
+      - number: "20"
+        acl: "7"
+        action: "set vrf VPN_B"
+      - number: "30"
+        acl: "8"
+        action: "set vrf VPN_C"
+      

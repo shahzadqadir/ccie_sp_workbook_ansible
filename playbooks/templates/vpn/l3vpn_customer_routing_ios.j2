@@ -1,3 +1,5 @@
+#jinja2: trim_blocks: False
+
 {% for l3vpn in l3vpns %}
   vrf definition {{ l3vpn.vrf }}
   rd {{ l3vpn.rd }}
@@ -21,11 +23,11 @@
 {% if l3vpn.routing %}    
 {% if l3vpn.routing.type == "static" %} 
   {% for network in l3vpn.routing.networks %}
-    ip route vrf {{ l3vpn.vrf }} {{ network.subnet }} {{ network.mask }} {{ network.next_hop }}
+ip route vrf {{ l3vpn.vrf }} {{ network.subnet }} {{ network.mask }} {{ network.next_hop }}
   {% endfor %}            
-router bgp {{ bgp.as }}
-  address-family ipv4 unicast vrf {{ l3vpn.vrf }}
-    redistribute static metric {{ l3vpn.routing.metric }}
+  router bgp {{ bgp.as }}
+      address-family ipv4 unicast vrf {{ l3vpn.vrf }}
+      redistribute static metric {{ l3vpn.routing.metric }}
 
 {% elif l3vpn.routing.type == "eigrp" %}
 router eigrp {{ l3vpn.routing.as }}

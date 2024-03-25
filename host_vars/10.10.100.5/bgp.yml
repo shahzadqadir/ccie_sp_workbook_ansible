@@ -1,0 +1,12 @@
+---
+
+bgp:
+  as: "100"
+  peers:
+    - host: "2.2.2.2"
+      remote_as: "100"
+      update_source: "loopback0"
+      next_hop_self: true
+      address_families:
+        - "vpnv4"
+  networks: ""

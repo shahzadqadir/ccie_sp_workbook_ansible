@@ -1,0 +1,99 @@
+- name: "Play 1 - Configure MPLS Tunnels - IOS"
+  hosts: 10.10.100.2, 10.10.100.4, 10.10.100.5
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "Configure BGP on Edge IOS Routers"
+      cisco.ios.ios_config:
+        src: "vpn/all_tasks_bgp_ios.j2"
+      register: output
+    
+    - name: "Print configurations"
+      debug: var=output
+
+
+- name: "PLAY 2 - Configure MPLS Tunnels - XR"
+  hosts: 10.10.100.19
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "Configure BGP on Edge XR Routers"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/all_tasks_bgp_xr.j2"
+      register: output
+
+    - name: "Print Configurations"
+      debug: var=output
+
+- name: "PLAY 3 - Configure VRFs, Interfaces, Routing - IOS"
+  hosts: 10.10.100.2
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "vrf configurations"
+      cisco.ios.ios_config:
+        src: "vpn/l3vpn_customer_routing_ios.j2"
+
+      register: output
+
+    - name: "Print configurations"
+      debug: var=output
+
+- name: "PLAY 4 - Configure VRFs, Interfaces, Routing - XR"
+  hosts: 10.10.100.19
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "vrf and associated configurations"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/l3vpn_customer_routing_xr.j2"
+
+      register: output
+    
+    - name: "Print configurations"
+      debug: var=output
+
+- name: "PLAY 5 - Configure PBR on R2"
+  hosts: 10.10.100.2
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "configure access lists"
+      cisco.ios.ios_config:
+        src: "acls/configure_acls.j2"
+
+    - name: "configure route maps"
+      cisco.ios.ios_config:
+        src: "routemaps/configure_routemap.j2"
+
+    - name: "attach pbr to interface"
+      cisco.ios.ios_config:
+        lines:
+          - ip policy route-map VRF_SELECTION_PBR
+          - ip vrf receive VPN_A
+          - ip vrf receive VPN_B
+          - ip vrf receive VPN_C
+        parents: interface g0/0
+
+      register: output    
+
+    - name: "Print configurations"
+      debug: var=output
+
+- name: "PLAY 6 - Configure additional interfaces on R1"
+  hosts: 10.10.100.1
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "configure additional interfaces"
+      cisco.ios.ios_config:
+        src: "base/interface_config_ios.j2"
+
+
+

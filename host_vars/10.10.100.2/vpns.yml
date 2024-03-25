@@ -7,12 +7,39 @@ l3vpns:
       - family: "ipv4"
         rt_import: "100:1"
         rt_export: "100:1"
-    interfaces:
-      - intf: "g0/0"
-        ipv4_add: "10.1.2.2"
-        mask: "255.255.255.0"
+    interfaces: ""
     routing:
-      type: "bgp"
-      neighbors:
-        - host: "10.1.2.1"
-          remote_as: "65002"
+      type: "static"
+      metric: "10"
+      networks:
+        - subnet: "1.1.1.20"
+          mask: "255.255.255.255"
+          next_hop: "10.1.2.1"
+  - vrf: "VPN_B"
+    rd: "100:2"
+    address_families:
+      - family: "ipv4"
+        rt_import: "100:2"
+        rt_export: "100:2"
+    interfaces: ""
+    routing:
+      type: "static"
+      metric: "10"
+      networks:
+        - subnet: "1.1.1.7"
+          mask: "255.255.255.255"
+          next_hop: "10.1.2.1"
+  - vrf: "VPN_C"
+    rd: "100:3"
+    address_families:
+      - family: "ipv4"
+        rt_import: "100:3"
+        rt_export: "100:3"
+    interfaces: ""
+    routing:
+      type: "static"
+      metric: "10"
+      networks:
+        - subnet: "1.1.1.8"
+          mask: "255.255.255.255"
+          next_hop: "10.1.2.1"

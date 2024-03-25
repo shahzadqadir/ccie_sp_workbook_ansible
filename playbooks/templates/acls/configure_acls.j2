@@ -1,0 +1,7 @@
+#jinja2: trim_blocks: False
+
+{% for acl in acls %}
+  {% for network in acl.networks %}
+    access-list {{acl.number }} permit {{network.subnet }} {{ network.wildcard_mask }}
+  {% endfor %}
+{% endfor %}

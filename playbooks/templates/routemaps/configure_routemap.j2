@@ -1,0 +1,9 @@
+#jinja2: trim_blocks: False
+
+{% for map in route_maps %}
+  {% for line in map.lines %}
+    route-map {{ map.name }} permit {{line.number }}
+      match ip address {{ line.acl }}
+      {{ line.action }}
+  {% endfor %}
+{% endfor %}
