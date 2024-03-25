@@ -57,6 +57,18 @@ router bgp {{ bgp.as }}
     address-family ipv4 unicast
       redistribute ospf {{ l3vpn.routing.process }} metric {{ l3vpn.routing.metric }}
 
+{% elif l3vpn.routing.type == "bgp" %}
+router bgp {{ bgp.as }}
+  vrf {{ l3vpn.vrf }}
+  rd {{ l3vpn.rd }}
+    address-family ipv4 unicast
+    {% for neighbor in l3vpn.routing.neighbors %}
+    neighbor {{ neighbor.host }} remote-as {{ neighbor.remote_as }}
+      address-family ipv4 unicast
+        route-policy DEFAULT_EBGP in
+        route-policy DEFAULT_EBGP out
+    {% endfor %}
+
 {% endif %}
 
 {% endif %}

@@ -12,12 +12,9 @@ l3vpns:
         ipv4_add: "10.19.20.19"
         mask: "24"
     routing:
-      type: "ospf"
-      process: "100"
-      metric: "128"
-      networks:
-        - subnet: "10.19.20.0"
-          mask: "24"
-          area: "0"
-          next_hop: ""
+      type: "bgp"
+      neighbors:
+        - host: "10.19.20.20"
+          remote_as: "65001"
+
           
