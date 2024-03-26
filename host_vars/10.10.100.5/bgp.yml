@@ -9,4 +9,16 @@ bgp:
       next_hop_self: true
       address_families:
         - "vpnv4"
+    - host: "4.4.4.4"
+      remote_as: "100"
+      update_source: "loopback0"
+      next_hop_self: true
+      address_families:
+        - "vpnv4"
+    - host: "19.19.19.19"
+      remote_as: "100"
+      update_source: "loopback0"
+      next_hop_self: true
+      address_families:
+        - "vpnv4"
   networks: ""

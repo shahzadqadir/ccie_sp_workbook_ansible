@@ -1,0 +1,31 @@
+---
+
+- name: "PLAY 1 - Configure BGP Full Mesh - IOS"
+  hosts: edge_ios
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "configure full mesh bgp - ios"
+      cisco.ios.ios_config:
+        src: "vpn/all_tasks_bgp_ios.j2"
+
+    - name: "configure l3vpn"
+      cisco.ios.ios_config:
+        src: "vpn/l3vpn_customer_routing_ios.j2"
+
+- name: "PLAY 2 - Configure BGP Full Mesh - XR"
+  hosts: edge_xr
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "configure full mesh bgp - iosxr"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/all_tasks_bgp_xr.j2"
+
+    - name: "configure l3vpn"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/l3vpn_customer_routing_xr.j2"
+
+

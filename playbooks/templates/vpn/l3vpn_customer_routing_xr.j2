@@ -2,8 +2,12 @@
   vrf {{ l3vpn.vrf }}
   {% for af in l3vpn.address_families %}
     address-family {{ af.family }} unicast
-    import route-target {{ af.rt_import }}
-    export route-target {{ af.rt_export }}
+    {% for rtimport in af.rt_import %}
+    import route-target {{ rtimport }}
+    {% endfor %}
+    {% for rtexport in af.rt_export %}
+    export route-target {{ rtexport }}
+    {% endfor %}
   {% endfor %}
   {% for interface in l3vpn.interfaces %}
     interface {{ interface.intf }}

@@ -5,8 +5,11 @@ l3vpns:
     rd: "100:2"
     address_families:
       - family: "ipv4"
-        rt_import: "100:2"
-        rt_export: "100:2"
+        rt_import: 
+          - "2.2.2.2:7"
+          - "19.19.19.19:7"
+        rt_export:
+          - "100:7"
     interfaces:
       - intf: "g0/4"
         ipv4_add: "10.4.7.4"

@@ -5,8 +5,12 @@
   rd {{ l3vpn.rd }}
   {% for af in l3vpn.address_families %}
     address-family {{ af.family }}
-      route-target import {{ af.rt_import }}
-      route-target export {{ af.rt_export }}
+      {% for rtimp in af.rt_import %}
+      route-target import {{ rtimp }}
+      {% endfor %}
+      {% for rtexp in af.rt_export%}
+      route-target export {{ rtexp }}
+      {% endfor %}
   {% endfor %}
   {% for interface in l3vpn.interfaces %}
     interface {{ interface.intf }}
