@@ -38,7 +38,8 @@ router eigrp {{ l3vpn.routing.as }}
   address-family ipv4 vrf {{ l3vpn.vrf }} autonomous-system {{ l3vpn.routing.as }}
   {% for network in l3vpn.routing.networks %}
     network {{ network.subnet }} {{ network.mask }}
-  {% endfor %}            
+  {% endfor %}
+  redistribute bgp {{ bgp.as }} metric 1500 0 255 1 1500           
 router bgp {{ bgp.as }}
   address-family ipv4 unicast vrf {{ l3vpn.vrf }}
     redistribute eigrp {{ l3vpn.routing.as }} metric {{ l3vpn.routing.metric }}

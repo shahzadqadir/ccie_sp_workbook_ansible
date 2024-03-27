@@ -1,3 +1,5 @@
+#jinja2: trim_blocks: False
+
 router bgp {{ bgp.as }}
   no bgp default ipv4-unicast
   {% for neighbor in bgp.peers %}
@@ -7,13 +9,16 @@ router bgp {{ bgp.as }}
     {% endif %}
     {% if neighbor.next_hop_self %}
     neighbor {{ neighbor.host }} next-hop-self
-    {% endif %}
+    {% endif %}    
   {% endfor %}
   {% for neighbor in bgp.peers %}
     {% if neighbor.address_families %}
     {% for af in neighbor.address_families %}
       address-family {{ af }} unicast
       neighbor {{ neighbor.host }} activate
+      {% if neighbor.route_reflector_client %}
+      neighbor {{ neighbor.host }} route-reflector-client
+      {% endif %}
   {% endfor %}
 {% endif %}
   {% endfor %}

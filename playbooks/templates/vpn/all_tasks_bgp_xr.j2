@@ -1,3 +1,5 @@
+#jinja2: trim_blocks: False
+
 route-policy DEFAULT_EBGP
     pass
     end-policy
@@ -18,6 +20,11 @@ router bgp {{ bgp.as }}
             neighbor {{ neighbor.host }} 
             address-family ipv4 unicast
                 next-hop-self
+        {% endif %}
+        {% if neighbor.route_reflector_client %}
+            neighbor {{ neighbor.host }}
+            address-family ipv4 unicast
+                route-reflector-client
         {% endif %}
     {% endfor %}
     {% if bgp.networks %}

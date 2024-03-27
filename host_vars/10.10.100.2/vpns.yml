@@ -6,19 +6,18 @@ l3vpns:
     address_families:
       - family: "ipv4"
         rt_import:
-          - "100:7"
-          - "100:8"
+          - "100:1"
         rt_export:
-          - "2.2.2.2:7"
-          - "2.2.2.2:8"
+          - "100:1"
     interfaces:
       - intf: "g0/0"
         ipv4_add: "10.1.2.2"
         mask: "255.255.255.0"
     routing:
-      type: "static"
+      type: "eigrp"
+      as: "1"
       metric: "10"
       networks:
-        - subnet: "1.1.1.1"
-          mask: "255.255.255.255"
-          next_hop: "10.1.2.1"
+        - subnet: "10.1.2.0"
+          mask: "0.0.0.255"
+
