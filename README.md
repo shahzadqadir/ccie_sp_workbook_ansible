@@ -27,5 +27,5 @@
 
 ![alt text](image.png)
 
-Interested in learning Ansible basics, I also host a course at Udemy, you can get it for only 9.99 - https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=CC34A1D83FF673D22E2C
+Interested in learning Ansible basics, I also host a course at Udemy, you can get it for only 9.99 - https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=67CCE60A60C068C156A3
 Msg me on linkedin if you need a free coupon.
