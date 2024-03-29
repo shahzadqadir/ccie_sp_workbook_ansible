@@ -3,7 +3,7 @@
 bgp:
   as: "100"
   peers:
-    - host: "3.3.3.3"
+    - host: "19.19.19.19"
       remote_as: "100"
       update_source: "loopback0"
       next_hop_self: true

@@ -1,31 +1,15 @@
 # Ansible Playbook Solutions to INE Service Provider Workbook v3
 
-#### Tasks Completed so far
+## Introduction
 
-- IPv4, IPv6 interface configurations
-- Task 2.1 - OSPF base configuration
-- Task 2.2 - OSPF Network Types
-- Task 2.3 - OSPF Path Selection
-- Task 2.5 - OSPF Authentication
-- Task 2.6 - OSPFv3 Base Configurations
-- Task 2.7 - OSPFv3 Path Selection
+This repository provides solutions to tasks in INE Service Provider Workbook v3 in Ansible Playbooks form. Instead of using CLI, ansible is used to complete the tasks. Jinja2 templates are used and configurations are achieved by changing host files wherever possible.
 
-- Task 2.11 - Base ISIS Configurations
-- Task 2.12 - ISIS Network Types
-- Task 2.13 - Missing
-- Task 2.14 - Missed, BFD - issues with GNS3
-- Task 2.15 - Skipped for now - ISIS Authentication
-- Task 2.16 - Multi Level ISIS
-- Task 2.17 - Route Leaking
-- Task 2.18 - Single Topology ISIS
+### Network Diagram
 
-- Task 3.1 -   Basic LDP
-- Task 3.2,3 - MPLS Autoconfig
-- Task 3.4 -   LDP Authentication
+![1711700268781](image/README/1711700268781.png)
 
-- Task 4.1 -  Basic MPLS Tunnels
+## Installation
 
-![alt text](image.png)
-
-Interested in learning Ansible basics, I also host a course at Udemy, you can get it for only 9.99 - https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=67CCE60A60C068C156A3
-Msg me on linkedin if you need a free coupon.
+```
+git clone https://github.com/shahzadqadir/ccie_sp_workbook_ansible.git
+```
