@@ -94,7 +94,78 @@ ansible
        ├── ospfv3.yml
        ├── ospf.yml
        ├── routemaps.yml
-       └── vpns.yml
+  ├── playbooks
+    ├── ansible.cfg
+    ├── base_ospf_test_r1.yml
+    ├── configure_interfaces.yml
+    ├── configure_ospf2.yml
+    ├── get_show_version.yml
+    ├── host_files_archive
+    ├── task_2.11_isis_baseconfig.yml
+    ├── task_2.12_isis_networktypes.yml
+    ├── task_2.16_multi_level_isis.yml
+    ├── task_2.17_isis_route_leaking.yml
+    ├── task_2.18_singletopologyisis_ios.yml
+    ├── task_2.19_multitopology_isis.yml
+    ├── task_2.2_network_type.yml
+    ├── task_2.3_path_selection.yml
+    ├── task_2.5_ospf_authentication.yml
+    ├── task_2.6_ospf3_base_config.yml
+    ├── task_2.8_ospf3_pathselection.yml
+    ├── task_3.1_basic_ldp.yml
+    ├── task_3.2_3.3_mpls_autconfig.yml
+    ├── task_3.4_ldp_authenticate.yml
+    ├── task_4.1_basic_mpls_tunnels.yml
+    ├── task_4.2_onwards_all_customer_routing.yml
+    ├── task_4.7_mpls_l3vpn_pbr.yml
+    ├── task_4.8_mpls_l3vpn_central_services.yml
+    ├── task_4.9_mpls_l3vpn_route_reflectors.yml
+    └── templates
+        ├── acls
+        │   └── configure_acls.j2
+        ├── base
+        │   ├── interface_config_ios.j2
+        │   └── interface_config_xr.j2
+        ├── isis
+        │   ├── task_2.11_isis_baseconfig_ios.j2
+        │   ├── task_2.11_isis_baseconfig_xr.j2
+        │   ├── task_2.12_isis_network_types_ios.j2
+        │   ├── task_2.12_isis_network_types_xr.j2
+        │   ├── task_2.16_multi_level_isis_xr.j2
+        │   ├── task_2.16_mutli_level_isis_ios.j2
+        │   ├── task_2.17_isis_route_leaking_ios.j2
+        │   ├── task_2.17_isis_route_leaking_xr.j2
+        │   ├── task_2.18_isis_singletopology_ios.j2
+        │   ├── task_2.18_isis_singletopology_xr.j2
+        │   ├── task_2.19_isis_multitopology_ios.j2
+        │   └── task_2.19_isis_multitopology_xr.j2
+        ├── mpls
+        │   ├── task_3.1_basic_ldp_ios.j2
+        │   ├── task_3.2_3.3_autoconfig_ios.j2
+        │   ├── task_3.2_3.3_autoconfig_xr.j2
+        │   ├── task_3.4_ldp_authentication_ios.j2
+        │   └── task_3.4_ldp_authentication_xr.j2
+        ├── ospf
+        │   ├── ipv4_base_ospf_ios.j2
+        │   ├── ipv4_base_ospf_xr.j2
+        │   ├── task_2.2_network_types_ios.j2
+        │   ├── task_2.2_network_types_xr.j2
+        │   ├── task_2.3_path_selection_ios.j2
+        │   ├── task_2.3_path_selection_xr.j2
+        │   ├── task_2.5_ospf_authentication_ios.j2
+        │   ├── task_2.5_ospf_authentication_xr.j2
+        │   ├── task_2.6_ospf3_baseconfig_ios.j2
+        │   ├── task_2.6_ospf3_baseconfig_xr.j2
+        │   ├── task_2.8_ospf3_pathselection_ios.j2
+        │   └── task_2.8_ospf3_pathselection_xr.j2
+        ├── pbr
+        ├── routemaps
+        │   └── configure_routemap.j2
+        └── vpn
+            ├── all_tasks_bgp_ios.j2
+            ├── all_tasks_bgp_xr.j2
+            ├── l3vpn_customer_routing_ios.j2
+           └── l3vpn_customer_routing_xr.j2
 
 ```
 
