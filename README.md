@@ -169,4 +169,4 @@ ansible
 
 ```
 
-Interested in learning Ansible basics, I also host a course at Udemy, you can get it for only 9.99 - [https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=67CCE60A60C068C156A3](https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=67CCE60A60C068C156A3) Msg me on linkedin if you need a free coupon.
+Interested in learning Ansible basics, I also host a course at Udemy, you can get it for only 9.99 - [https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=68144D43D08ADC67DFB3](https://www.udemy.com/course/complete-ansible-for-network-engineers-ios-junos-arista/?couponCode=68144D43D08ADC67DFB3) Msg me on linkedin if you need a free coupon.
