@@ -1,6 +1,6 @@
-hostname R6
+hostname SW2
 interface g0/3
- ip address 10.10.100.6 255.255.255.0
+ ip address 10.10.100.10 255.255.255.0
  no shut
 username cisco priv 15 password cisco123
 ip domain name shahzadqadir.net

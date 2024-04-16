@@ -1,13 +1,13 @@
 ---
 
 interfaces:
-  - intf: "g0/1"
-    ip_address: "40.2.7.7"
+  - intf: "g0/2"
+    ip_address: "30.2.9.9"
     ipv6_address: "2001:40:2:7::7/64"
     mask: "255.255.255.0"    
     state: "up" 
   - intf: "loopback0"
-    ip_address: "7.7.7.7"
-    ipv6_address: "2001::7:7:7:7/128"
+    ip_address: "9.9.9.9"
+    ipv6_address: "2001::9:9:9:9/128"
     mask: "255.255.255.255"
     state: "up"
