@@ -7,19 +7,20 @@ route-policy DEFAULT_EBGP
 router bgp {{ bgp.as }}
     address-family ipv4 unicast
     address-family vpnv4 unicast
+    {% if bgp.retain_rt %}
+        retain route-target all
+    {% endif %} 
     {% for neighbor in bgp.peers %}
         neighbor {{ neighbor.host }} remote-as {{ neighbor.remote_as}}
         {% for af in neighbor.address_families %}
             neighbor {{ neighbor.host }} address-family {{ af }} unicast route-policy DEFAULT_EBGP in
             neighbor {{ neighbor.host }} address-family {{ af }} unicast route-policy DEFAULT_EBGP out
+            {% if neighbor.next_hop_self %}
+            neighbor {{ neighbor.host }} address-family {{ af }} unicast next-hop-self
+            {%endif %}
         {% endfor %}        
         {% if neighbor.update_source %}
             neighbor {{ neighbor.host }} update-source {{ neighbor.update_source }}
-        {% endif %}
-        {% if neighbor.next_hop_self %}
-            neighbor {{ neighbor.host }} 
-            address-family ipv4 unicast
-                next-hop-self
         {% endif %}
         {% if neighbor.route_reflector_client %}
             neighbor {{ neighbor.host }}

@@ -2,6 +2,7 @@
 
 bgp:
   as: "200"
+  retain_rt: false
   peers:
     - host: "19.19.19.19"
       remote_as: "200"

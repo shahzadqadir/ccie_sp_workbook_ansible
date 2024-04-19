@@ -2,6 +2,9 @@
 
 router bgp {{ bgp.as }}
   no bgp default ipv4-unicast
+  {% if bgp.retain_rt %}
+  bgp default route-target filter
+  {% endif %} 
   {% for neighbor in bgp.peers %}
     neighbor {{ neighbor.host }} remote-as {{ neighbor.remote_as}}
     {% if neighbor.update_source %}
@@ -12,7 +15,7 @@ router bgp {{ bgp.as }}
     {% endif %}
     {% if neighbor.next_hop_self %}
     neighbor {{ neighbor.host }} next-hop-self
-    {% endif %}    
+    {% endif %}       
   {% endfor %}
   {% for neighbor in bgp.peers %}
     {% if neighbor.address_families %}
@@ -21,6 +24,9 @@ router bgp {{ bgp.as }}
       neighbor {{ neighbor.host }} activate
       {% if neighbor.route_reflector_client %}
       neighbor {{ neighbor.host }} route-reflector-client
+      {% endif %}
+      {% if neighbor.next_hop_self %}
+        neighbor {{ neighbor.host }} next-hop-self
       {% endif %}     
   {% endfor %}
 {% endif %}

@@ -2,6 +2,7 @@
 
 bgp:
   as: "100"
+  retain_rt: false
   peers:
     - host: "1.1.1.1"
       remote_as: "100"

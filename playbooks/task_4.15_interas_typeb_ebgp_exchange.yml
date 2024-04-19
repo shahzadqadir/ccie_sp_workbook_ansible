@@ -1,0 +1,133 @@
+---
+# - name: "PLAY 1 - CONFIGURE OSPF and LDP IN AS 1 - IOS ROUTERS"
+#   hosts: interas_as1
+#   connection: network_cli
+#   gather_facts: false
+
+#   tasks:
+
+#     - name: "Configure Basic OSPF"
+#       cisco.ios.ios_config:
+#         src: "ospf/ipv4_base_ospf_ios.j2"
+
+#     - name: "Configure Basic LDP"
+#       cisco.ios.ios_config:
+#         src: "mpls/task_3.1_basic_ldp_ios.j2"
+
+#     - name: "Pull configurations"
+#       cisco.ios.ios_command:
+#         commands:
+#           - show ip ospf neighbor
+#           - show mpls ldp neighbor
+#           - show mpls forwarding
+#       register: output
+
+#     - name: "Show configurations"
+#       debug: var=output
+
+# - name: "PLAY 2 - CONFIGURE ISIS and LDP ON AS 2 - XR ROUTERS"
+#   hosts: interas_as2_xr
+#   connection: network_cli
+#   gather_facts: false
+
+#   tasks:
+
+#     - name: "Configure ISIS on XR routers"
+#       cisco.iosxr.iosxr_config:
+#         src: "isis/task_2.11_isis_baseconfig_xr.j2"
+    
+#     - name: "Configure LDP on XR Routers"
+#       cisco.iosxr.iosxr_config:
+#         src: "mpls/task_3.1_basic_ldp_xr.j2"
+
+#     - name: "Capture outputs"
+#       cisco.ios.ios_command:
+#         commands:
+#           - show ip route isis
+#           - show mpls ldp interface
+#           - show mpls ldp neighbor
+#       register: output
+
+#     - name: "Show configuration outputs"
+#       debug: var=output
+
+# - name: "PLAY 3 - CONFIGURE ISIS and LDP ON AS 2 - IOS ROUTERS"
+#   hosts: interas_as2_ios
+#   connection: network_cli
+#   gather_facts: false
+
+#   tasks:
+
+#     - name: "Configure ISIS on IOS Routers"
+#       cisco.ios.ios_config:
+#         src: "isis/task_2.11_isis_baseconfig_ios.j2"
+
+#     - name: "Configure LDP on IOS Routers"
+#       cisco.ios.ios_config:
+#         src: "mpls/task_3.1_basic_ldp_ios.j2"
+
+#     - name: "Capture command outputs"
+#       cisco.ios.ios_command:
+#         commands:
+#           - show ip route isis
+#           - show mpls interfaces
+#           - show mpls ldp neighbor
+#       register: output
+
+#     - name: "Show configuration outputs"
+#       debug: var=output
+
+- name: "PLAY 4 - CONFIGURE PE ROUTERS IN AS 1 - IOS"
+  hosts: interas_as1_pes
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+
+    - name: "Configure BGP VPNv4 on PE Routers AS 1"
+      cisco.ios.ios_config:
+        src: "vpn/all_tasks_bgp_ios.j2"
+
+    - name: "Pull configurations"
+      cisco.ios.ios_command:
+        commands:
+          - show bgp vpnv4 uni all summary
+
+      register: output
+
+    - name: "Show configurations"
+      debug: var=output
+
+- name: "PLAY 5 - CONFIGURE PE ROUTERS IN AS 2 - XR"
+  hosts: interas_as2_pes
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+
+    - name: "Configure VPNv4 on PE Routers AS 2"
+      cisco.iosxr.iosxr_config:
+        src: "vpn/all_tasks_bgp_xr.j2"
+
+# - name: "PLAY 6 - CONFIGURE CUSTOMER VRFs in AS 1"
+#   hosts: 10.10.100.2
+#   connection: network_cli
+#   gather_facts: false
+
+#   tasks:
+
+#     - name: "Configure Customer VRFs and Routing"
+#       cisco.ios.ios_config:
+#         src: "vpn/l3vpn_customer_routing_ios.j2"
+
+# - name: "PLAY 7 - CONFIGURE CUSTOMER VRFs in AS 2"
+#   hosts: 10.10.100.20
+#   connection: network_cli
+#   gather_facts: false
+
+#   tasks:
+
+#     - name: "Configure Customer VRFs and Routing"
+#       cisco.iosxr.iosxr_config:
+#         src: "vpn/l3vpn_customer_routing_xr.j2"
+

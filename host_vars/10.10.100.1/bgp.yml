@@ -2,13 +2,22 @@
 
 bgp:
   as: "100"
+  retain_rt: true
   peers:
     - host: "2.2.2.2"
       remote_as: "100"
       update_source: "loopback0"
       next_hop_self: true
-      route_reflector_client: true
-      ebgp_multihop: true
+      route_reflector_client: false
+      ebgp_multihop: false      
+      address_families:
+        - "vpnv4"
+    - host: "30.1.19.19"
+      remote_as: "200"
+      update_source: ""
+      next_hop_self: false
+      route_reflector_client: false
+      ebgp_multihop: false
       address_families:
         - "vpnv4"
   networks: ""

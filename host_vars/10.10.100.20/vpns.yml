@@ -21,13 +21,13 @@ l3vpns:
   #       - subnet: "30.10.20.0"
   #         mask: "24"
   - vrf: "VPN_B"
-    rd: "200:2"
+    rd: "101:201"
     address_families:
       - family: "ipv4"
         rt_import:
-          - "200:2"
+          - "101:201"
         rt_export:
-          - "200:2"
+          - "101:201"
     interfaces:
       - intf: "g0/0/0/1"
         ipv4_add: "40.8.20.20"
