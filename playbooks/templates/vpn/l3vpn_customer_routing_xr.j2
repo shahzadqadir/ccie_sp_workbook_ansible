@@ -41,7 +41,7 @@ router eigrp {{ l3vpn.routing.as }}
   {% for interface in l3vpn.interfaces %}
     interface {{ interface.intf}}
   {% endfor %}
-  redistribute bgp 100 route-policy DEFAULT_EBGP
+  redistribute bgp {{ bgp.as }} route-policy DEFAULT_EBGP
 router bgp {{ bgp.as }}
   vrf {{ l3vpn.vrf }}
   rd {{ l3vpn.rd }}

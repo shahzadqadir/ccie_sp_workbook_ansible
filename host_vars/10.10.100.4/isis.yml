@@ -16,18 +16,12 @@ isis:
       metric: ""
       network_type: ""
       enable_ipv4: true
-      enable_ipv6: true
-    - intf: "g0/1"
+      enable_ipv6: false
+    - intf: "g0/2"
       circuit_type: "level-2-only"
       metric: ""
       network_type: ""
       enable_ipv4: true
-      enable_ipv6: true
-    - intf: "g0/2"
-      circuit_type: "level-1"
-      metric: ""
-      network_type: ""
-      enable_ipv4: true
-      enable_ipv6: true
+      enable_ipv6: false
   passive_interfaces:
     - intf: "loopback0"

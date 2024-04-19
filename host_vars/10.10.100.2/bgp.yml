@@ -3,11 +3,12 @@
 bgp:
   as: "100"
   peers:
-    - host: "19.19.19.19"
+    - host: "1.1.1.1"
       remote_as: "100"
       update_source: "loopback0"
       next_hop_self: true
-      route_reflector_client: false
+      route_reflector_client: true
+      ebgp_multihop: true
       address_families:
         - "vpnv4"
   networks: ""

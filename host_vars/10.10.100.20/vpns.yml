@@ -2,41 +2,42 @@
 
 l3vpns:
   # - vrf: "VPN_A"
-  #   rd: "100:1"
+  #   rd: "200:1"
   #   address_families:
   #     - family: "ipv4"
   #       rt_import:
-  #         - "100:1"
+  #         - "200:1"
   #       rt_export:
-  #         - "100:1"
+  #         - "200:1"
   #   interfaces:
-  #     - intf: "g0/2"
-  #       ipv4_add: "30.2.9.2"
-  #       mask: "255.255.255.0"
+  #     - intf: "g0/0/0/2"
+  #       ipv4_add: "30.10.20.20"
+  #       mask: "24"
   #   routing:
   #     type: "eigrp"
   #     as: "1"
   #     metric: "10"
   #     networks:
-  #       - subnet: "30.2.9.0"
-  #         mask: "0.0.0.255"
+  #       - subnet: "30.10.20.0"
+  #         mask: "24"
   - vrf: "VPN_B"
-    rd: "100:2"
+    rd: "200:2"
     address_families:
       - family: "ipv4"
         rt_import:
-          - "100:2"
+          - "200:2"
         rt_export:
-          - "100:2"
+          - "200:2"
     interfaces:
-      - intf: "g0/1"
-        ipv4_add: "40.2.7.2"
-        mask: "255.255.255.0"
+      - intf: "g0/0/0/1"
+        ipv4_add: "40.8.20.20"
+        mask: "24"
     routing:
       type: "eigrp"
       as: "1"
       metric: "10"
       networks:
-        - subnet: "40.2.7.0"
-          mask: "0.0.0.255"
+        - subnet: "40.8.20.0"
+          mask: "24"
 
+          

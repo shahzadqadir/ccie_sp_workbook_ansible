@@ -3,3 +3,8 @@ router ospf {{ ospf.process_id }}
   {% for network in ospf.networks %}
     network {{ network.subnet }} {{ network.mask }} area {{ network.area }}
   {% endfor %}
+  {% if ospf.passive_interfaces %}
+  {% for interface in ospf.passive_interfaces %}
+    passive-interface {{ interface.intf }}
+  {% endfor %}
+  {% endif %}

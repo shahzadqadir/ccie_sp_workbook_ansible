@@ -1,0 +1,9 @@
+#jinja2: trim_blocks: False
+
+mpls ldp
+  address-family ipv4
+
+{% for interface in mpls.interfaces %}
+mpls ldp interface {{ interface.intf }}
+  address-family ipv4
+{% endfor %}

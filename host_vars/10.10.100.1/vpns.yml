@@ -10,15 +10,15 @@ l3vpns:
   #       rt_export:
   #         - "100:1"
   #   interfaces:
-  #     - intf: "g0/2"
-  #       ipv4_add: "30.2.9.2"
+  #     - intf: "g0/0"
+  #       ipv4_add: "30.1.19.1"
   #       mask: "255.255.255.0"
   #   routing:
   #     type: "eigrp"
   #     as: "1"
   #     metric: "10"
   #     networks:
-  #       - subnet: "30.2.9.0"
+  #       - subnet: "30.1.19.0"
   #         mask: "0.0.0.255"
   - vrf: "VPN_B"
     rd: "100:2"
@@ -30,13 +30,12 @@ l3vpns:
           - "100:2"
     interfaces:
       - intf: "g0/1"
-        ipv4_add: "40.2.7.2"
+        ipv4_add: "40.1.19.1"
         mask: "255.255.255.0"
     routing:
       type: "eigrp"
       as: "1"
       metric: "10"
       networks:
-        - subnet: "40.2.7.0"
+        - subnet: "40.1.19.0"
           mask: "0.0.0.255"
-

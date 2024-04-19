@@ -5,7 +5,6 @@ mpls:
   router_id: "loopback0"
   password_required: False
   interfaces:
-    - intf: "g0/0"
     - intf: "g0/2"
   autoconfig: ""
   neighbors: ""

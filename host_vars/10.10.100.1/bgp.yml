@@ -1,15 +1,15 @@
 ---
 
 bgp:
-  as: "1"
+  as: "100"
   peers:
-    - host: "10.1.2.2"
+    - host: "2.2.2.2"
       remote_as: "100"
-      update_source: ""
-      next_hop_self: false
+      update_source: "loopback0"
+      next_hop_self: true
+      route_reflector_client: true
+      ebgp_multihop: true
       address_families:
-        - "ipv4"
-  networks:
-    - subnet: "1.1.1.1"
-      mask: "255.255.255.255"
+        - "vpnv4"
+  networks: ""
       

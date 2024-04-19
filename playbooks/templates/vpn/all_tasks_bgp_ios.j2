@@ -7,6 +7,9 @@ router bgp {{ bgp.as }}
     {% if neighbor.update_source %}
     neighbor {{ neighbor.host }} update-source {{ neighbor.update_source }}
     {% endif %}
+    {% if neighbor.ebgp_multihop %}
+    neighbor {{ neighbor.host }} ebgp-multihop
+    {% endif %}
     {% if neighbor.next_hop_self %}
     neighbor {{ neighbor.host }} next-hop-self
     {% endif %}    
@@ -18,7 +21,7 @@ router bgp {{ bgp.as }}
       neighbor {{ neighbor.host }} activate
       {% if neighbor.route_reflector_client %}
       neighbor {{ neighbor.host }} route-reflector-client
-      {% endif %}
+      {% endif %}     
   {% endfor %}
 {% endif %}
   {% endfor %}

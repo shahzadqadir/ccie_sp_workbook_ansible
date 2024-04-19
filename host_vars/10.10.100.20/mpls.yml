@@ -3,12 +3,9 @@
 mpls:
   protocol: "ldp"
   router_id: "loopback0"
-  password_required: False
   interfaces:
-    - intf: "g0/0"
-    - intf: "g0/2"
+    - intf: "g0/0/0/0"
   autoconfig: ""
   neighbors: ""
   group_acl: ""
   option_1: ""
-  fallback: ""

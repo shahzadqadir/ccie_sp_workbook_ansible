@@ -3,24 +3,11 @@
 mpls:
   protocol: "ldp"
   router_id: "loopback0"
-  password_required: True
+  password_required: False
   interfaces:
-    - intf: "g0/1"
-    - intf: "g0/2"
-  autoconfig:
-    - igp: "ospf"
-      process_id: "100"
-      enable: False
-    - igp: "isis"
-      process_id: ""
-      enable: True
-  neighbors:
-    - host: "3.3.3.3"
-      authenticate: True
-      password: "R2R3PASS"
-    - host: "4.4.4.4"
-      authenticate: True
-      password: "R2R4PASS"
+    - intf: "g0/0"
+  autoconfig: ""
+  neighbors: ""
   group_acl: ""
   option_1: ""
   fallback: ""

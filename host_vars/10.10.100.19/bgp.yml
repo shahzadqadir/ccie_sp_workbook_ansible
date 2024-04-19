@@ -1,28 +1,15 @@
 ---
 
 bgp:
-  as: "100"
+  as: "200"
   peers:
-    - host: "2.2.2.2"
-      remote_as: "100"
+    - host: "20.20.20.20"
+      remote_as: "200"
       update_source: "loopback0"
       next_hop_self: true
       route_reflector_client: true
+      ebgp_multihop: true
       address_families:
-        - "vpnv4"
-    - host: "4.4.4.4"
-      remote_as: "100"
-      update_source: "loopback0"
-      next_hop_self: true
-      route_reflector_client: true
-      address_families:
-        - "vpnv4"
-    - host: "5.5.5.5"
-      remote_as: "100"
-      update_source: "loopback0"
-      next_hop_self: true
-      route_reflector_client: true
-      address_families:
-        - "vpnv4"
+        - "vpnv4"    
   networks: ""
   route_policy: ""

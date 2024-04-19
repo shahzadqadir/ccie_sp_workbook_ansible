@@ -14,6 +14,6 @@ isis:
       ipv6_metric: ""
       network_type: ""
       enable_ipv4: true
-      enable_ipv6: true
+      enable_ipv6: false
   passive_interfaces:
     - intf: "loopback0"

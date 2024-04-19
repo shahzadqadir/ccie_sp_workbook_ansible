@@ -1,7 +1,9 @@
+#jinja2: trim_blocks: False
+
 {% if isis.process_id %}
-  router isis {{ isis.process_id }}
+router isis {{ isis.process_id }}
 {% else %}
-  router isis
+router isis
 {% endif %}
     net {{ isis.net }}
     {% if isis.is_type %}
